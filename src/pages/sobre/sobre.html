@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-toolbar color="preto">
+      <ion-title>
+        Sobre o App
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="close()">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  
+  </ion-header>
+  
+  
+  <ion-content>
+    <ion-list>
+      <ion-list-header>
+        Eclesia - SG
+      </ion-list-header>
+      <ion-item>
+        <ion-row>
+          <ion-col col-6><img src="assets/icon/icon.png" style="max-height: 80px;" align="right"></ion-col>
+          <ion-col col-6><p style="top:50%;">{{versao.nome}}<br>Versão: {{versao.versao}}</p></ion-col>
+        </ion-row>
+      </ion-item>
+      <button ion-item (click)="open('legal')">
+        Termos de Privacidade
+      </button>
+      <button ion-item (click)="open('site')">
+        Site do Aplicativo
+      </button>
+      <button ion-item (click)="rate()">
+        Avalie na Loja
+      </button>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        Desenvolvedor - Weslley Silva
+      </ion-list-header>
+  
+      <button ion-item (click)="open('sitetw')">
+        Site do Desenvolvedor
+      </button>
+      <ion-item style="text-align: center;font-size: smaller">Copyright (c) 2017  Comunidade Eclesia</ion-item>
+    </ion-list>
+  </ion-content>
+  
