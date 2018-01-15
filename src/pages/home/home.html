@@ -1,14 +1,44 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar color="preto">
+    <ion-buttons left>
+      <button ion-button icon-only color="royal" (click)="presentPop($event)" *ngIf="verLogin() === false">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <button ion-button icon-only (click)="presentPopover($event)" *ngIf="verLogin() === true">
+        <ion-icon name="person"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title></ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only color="royal" (click)="share()">
+        <ion-icon name="md-share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content class="corpo">
+  <div class="head">
+    <img src="assets/img/logo.png">
+  </div>
+  <div class="menu">
+    <div class="flex-container">
+      <button ion-button class="flex-item-large" style="background-image:url('assets/buttons/btn1.png'); background-size:cover" clear (click)="abrir('Reunioes')">Reuniões</button>
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn2.png'); background-size:cover" clear (click)="abrir('Celulas')">Células</button>
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn3.png'); background-size:cover" clear (click)="abrir('Agenda')">Eventos</button>
+      <button ion-button class="flex-item-large" style="background-image:url('assets/buttons/btn4.png'); background-size:cover" clear (click)="abrir('Comochegar')">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Como Chegar</button>
+    </div>
+    <div class="flex-container">
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn19.png'); background-size:cover" clear (click)="presentYoug()"></button>
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn20.png'); background-size:cover" clear (click)="abrir('Papojovem')"></button>
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn6.png'); background-size:cover" clear (click)="abrir('Aigreja')">A Igreja</button>
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn14.png'); background-size:cover" clear (click)="abrir('Contato')">Contato</button>
+      <button ion-button class="flex-item-large" style="background-image:url('assets/buttons/btn12.png'); background-size:cover" clear (click)="conta()"></button>
+    </div>
+    <div class="flex-container">
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn10.png'); background-size:cover" clear (click)="open('youtube')"></button>
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn11.png'); background-size:cover" clear (click)="open('face')"></button>
+      <button ion-button class="flex-item" style="background-image:url('assets/buttons/btn7.png'); background-size:cover" clear (click)="abrir('Feedback')"></button>
+    </div>
+  </div>
 </ion-content>
