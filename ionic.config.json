@@ -1,0 +1,8 @@
+{
+  "name": "EclesiaApp",
+  "app_id": "34182561",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
