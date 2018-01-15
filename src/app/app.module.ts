@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SobrePage } from './../pages/sobre/sobre';
+import { PerfilPage } from './../pages/perfil/perfil';
 
 
 
@@ -20,7 +21,8 @@ import { LaunchReview } from '@ionic-native/launch-review';
   declarations: [
     MyApp,
     HomePage,
-    SobrePage
+    SobrePage,
+    PerfilPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { LaunchReview } from '@ionic-native/launch-review';
   entryComponents: [
     MyApp,
     HomePage,
-    SobrePage
+    SobrePage,
+    PerfilPage
   ],
   providers: [
     StatusBar,

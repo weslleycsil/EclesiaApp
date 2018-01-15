@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start left>
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Edit Profile</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="updateProfile()">
+        <ion-icon name="checkmark" color="primary"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <!-- Profile picture -->
+  <div text-center>
+    <img [src]="user_data.profile_img" class="edit-avatar" alt="">
+    <p class="change-text">Change Photo</p>
+  </div>
+
+  <!-- Private information form -->
+  <div margin-top padding-top>
+    <h4 no-margin no-padding class="info-text">Private Information</h4>
+    <hr class="custom-hr" color="gray">
+  </div>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="mail" color="gray"></ion-icon>
+    </ion-label>
+    <ion-input type="text" [value]="user_data.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="phone-portrait" color="gray"></ion-icon>
+    </ion-label>
+    <ion-input type="text" [value]="user_data.phone" placeholder="Add your phone"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      <ion-icon name="transgender" color="gray"></ion-icon>
+    </ion-label>
+    <ion-select class="custom-select" [(ngModel)]="user_data.gender">
+      <ion-option value="male">Male</ion-option>
+      <ion-option value="female">Female</ion-option>
+      <ion-option value="none">Not Specified</ion-option>
+    </ion-select>
+  </ion-item>
+
+</ion-content>
