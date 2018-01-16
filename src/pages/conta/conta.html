@@ -1,0 +1,58 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Conta</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item-group>
+    <button ion-item color="light">
+      <ion-avatar item-left>
+      <img src="assets/img/profiles/avatar-ts-buzz.png">
+    </ion-avatar>
+    <p>Woody Pecker</p>
+    <p ion-text color="secondary">Editar</p>
+    </button>
+  </ion-item-group>
+
+  <ion-item-group>
+    <ion-item-divider color="grey"></ion-item-divider>
+    <button ion-item detail-none>
+      Notificações Recebidas
+      <ion-badge item-end>260</ion-badge>
+    </button>
+    <button ion-item detail-none>
+      Oferta/Dízimo Online
+    </button>
+  </ion-item-group>
+
+  <ion-list>
+    <ion-item-divider></ion-item-divider>
+
+    <ion-list-header>
+      Configurações
+    </ion-list-header>
+
+
+    <ion-item>
+      <button ion-button outline item-start (click)="info()" ><ion-icon name="star"></ion-icon></button>
+      <ion-label>Cache de Dados</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+
+    <button ion-item detail-none>
+      Limpar Cache
+      <ion-badge item-end>260k</ion-badge>
+    </button>
+
+    <button ion-item detail-none>
+      Sobre o App
+    </button>
+
+  </ion-list>
+
+</ion-content>

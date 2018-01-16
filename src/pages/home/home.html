@@ -5,6 +5,7 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <button ion-button icon-only (click)="presentPopover($event)" *ngIf="verLogin() === true">
+        <ion-badge *ngIf="n" color="accent">+{{n}}</ion-badge>
         <ion-icon name="person"></ion-icon>
       </button>
     </ion-buttons>

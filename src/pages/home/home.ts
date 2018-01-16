@@ -12,6 +12,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 })
 export class HomePage {
   pages: Array<{title: string, component: any}>;
+  n = 9;
 
   constructor(
     public navCtrl: NavController,

@@ -4,17 +4,27 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+//componentes
+import { ExpandableComponent } from './../components/expandable/expandable';
+
+//providers
+import { PayPalProvider } from '../providers/pay-pal/pay-pal';
+
+//paginas
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SobrePage } from './../pages/sobre/sobre';
 import { PerfilPage } from './../pages/perfil/perfil';
-
-
+import { ContaPage } from './../pages/conta/conta';
+import { PayPage } from './../pages/pay/pay';
 
 //plugins
 import { AppVersion } from '@ionic-native/app-version';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LaunchReview } from '@ionic-native/launch-review';
+import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+
+
 
 
 @NgModule({
@@ -22,7 +32,10 @@ import { LaunchReview } from '@ionic-native/launch-review';
     MyApp,
     HomePage,
     SobrePage,
-    PerfilPage
+    PerfilPage,
+    ContaPage,
+    ExpandableComponent,
+    PayPage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +46,10 @@ import { LaunchReview } from '@ionic-native/launch-review';
     MyApp,
     HomePage,
     SobrePage,
-    PerfilPage
+    PerfilPage,
+    ContaPage,
+    ExpandableComponent,
+    PayPage
   ],
   providers: [
     StatusBar,
@@ -41,7 +57,9 @@ import { LaunchReview } from '@ionic-native/launch-review';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AppVersion,
     InAppBrowser,
-    LaunchReview
+    LaunchReview,
+    PayPal,
+    PayPalProvider
   ]
 })
 export class AppModule {}
