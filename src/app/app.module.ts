@@ -21,15 +21,15 @@ import { PerfilPage } from './../pages/perfil/perfil';
 import { ContaPage } from './../pages/conta/conta';
 import { PayPage } from './../pages/pay/pay';
 import { CelulasPage } from '../pages/celulas/celulas';
+import { ReunioesPage } from '../pages/reunioes/reunioes';
+import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
+import { IgrejaPage } from './../pages/igreja/igreja';
 
 //plugins
 import { AppVersion } from '@ionic-native/app-version';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LaunchReview } from '@ionic-native/launch-review';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
-
-
-
 
 
 
@@ -42,7 +42,10 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     ContaPage,
     ExpandableComponent,
     PayPage,
-    CelulasPage
+    CelulasPage,
+    ReunioesPage,
+    ReunioesViewPage,
+    IgrejaPage
   ],
   imports: [
     BrowserModule,
