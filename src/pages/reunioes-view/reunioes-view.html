@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar color="preto">
+    <ion-title>{{dia.dia}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="corpo" padding>
+
+  <ion-list>
+    <ion-grid fixed>
+      <ion-row align-items-stretch>
+        <!-- ################ Conteudo Dinamico ################ -->
+        <ion-col col-12 col-md-6 align-self-stretch align-self-center *ngFor="let reuniao of dia.reuniao" >
+          <ion-card class="speaker-card">
+            <ion-card-content>
+              <ion-card-title>
+                {{ reuniao.nome }}
+              </ion-card-title>
+              <p>
+                Horário: {{ reuniao.horario }}h
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <!-- ################ Conteudo Dinamico ################ -->
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+</ion-content>
+

@@ -1,0 +1,44 @@
+
+<ion-content padding class="corpo">
+
+  <ion-list class="form">
+    <div class="logo">
+      <img src="assets/img/logo.png">
+    </div>
+
+    <form>
+      <ion-item>
+        <ion-input name="username" placeholder="Email" type="text" spellcheck="false" autocapitalize="off" required [(ngModel)]="credencial.email">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="password" placeholder="Senha" type="password" required [(ngModel)]="credencial.senha">
+        </ion-input>
+      </ion-item>
+
+      <ion-row responsive-sm>
+        <ion-col>
+          <button ion-button type="submit" color="pretobtn" block (click)="loginUser()">Login</button>
+        </ion-col>
+      </ion-row>
+    </form>
+      <ion-row responsive-sm>
+        <ion-col>
+          <button ion-button icon-left block color="vermelhobtn" (click)="loginFacebook()"><ion-icon name="logo-facebook"></ion-icon> Login com Facebook</button>
+        </ion-col>
+      </ion-row>
+      <ion-row class="rodape">
+        <ion-col width-50 style="text-align: right">
+          <button ion-button clear small (click)="onSignUp()">Registrar-se</button>
+        </ion-col>
+        <ion-col width-50>
+          <button ion-button clear small (click)="onReset()">Esqueci a Senha</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col style="text-align: center;"><button ion-button clear small (click)="voltar()">Voltar</button></ion-col>
+      </ion-row>
+  </ion-list>
+
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="preto">
+    <ion-title>Recuperar Senha</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="corpo">
+  <ion-list class="form">
+    <div class="logo">
+      <img src="assets/img/logo.png">
+    </div>
+
+    <form>
+      <ion-item>
+        <ion-input name="username" placeholder="Email" type="text"  spellcheck="false" autocapitalize="off" required [(ngModel)]="credencial.email">
+        </ion-input>
+      </ion-item>
+
+      <ion-row responsive-sm>
+        <ion-col>
+          <button ion-button  type="submit" color="vermelhobtn" block (click)="doReset()">Enviar</button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>

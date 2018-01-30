@@ -13,7 +13,7 @@ import { PayPage } from '../pages/pay/pay';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = PayPage;
+  rootPage:any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

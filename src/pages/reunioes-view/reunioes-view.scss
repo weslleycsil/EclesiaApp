@@ -1,0 +1,30 @@
+page-reunioes-view {
+    .speaker-card{
+        min-width: 250px;
+        max-width: 300px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        ion-card-content {
+        flex: 1 1 auto;
+        }
+    }
+    .corpo {
+        background: #000000;
+        position: relative;
+        width: 100%;
+        background-image: url("../assets/back/reunioes.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
+
+}
+@media screen and (min-width: 1024px) {
+
+    page-reunioes-view .speaker-card{
+        max-width: 500px;
+    }
+}

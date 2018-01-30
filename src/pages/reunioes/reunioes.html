@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar color="preto">
+    <ion-title>Reuniões</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="corpo" no-bounce>
+    <div class="head">
+      <img src="assets/img/logo.png">
+    </div>
+
+  <div class="body">
+    <div class="box">
+      <ion-list no-lines>
+        <button ion-item *ngFor="let item of listReunioes" (click)="verInfo(item)">
+          {{ item.dia }}
+        </button>
+    </ion-list>
+    </div>
+  </div>
+</ion-content>

@@ -9,6 +9,9 @@ import { ExpandableComponent } from './../components/expandable/expandable';
 
 //providers
 import { PayPalProvider } from '../providers/pay-pal/pay-pal';
+import { NetworkProvider } from '../providers/network-provider';
+import { Push } from '../providers/push';
+import { Dados } from '../providers/dados';
 
 //paginas
 import { MyApp } from './app.component';
@@ -17,12 +20,15 @@ import { SobrePage } from './../pages/sobre/sobre';
 import { PerfilPage } from './../pages/perfil/perfil';
 import { ContaPage } from './../pages/conta/conta';
 import { PayPage } from './../pages/pay/pay';
+import { CelulasPage } from '../pages/celulas/celulas';
 
 //plugins
 import { AppVersion } from '@ionic-native/app-version';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LaunchReview } from '@ionic-native/launch-review';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+
+
 
 
 
@@ -35,7 +41,8 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     PerfilPage,
     ContaPage,
     ExpandableComponent,
-    PayPage
+    PayPage,
+    CelulasPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +56,8 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     PerfilPage,
     ContaPage,
     ExpandableComponent,
-    PayPage
+    PayPage,
+    CelulasPage
   ],
   providers: [
     StatusBar,
@@ -59,7 +67,10 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
     InAppBrowser,
     LaunchReview,
     PayPal,
-    PayPalProvider
+    PayPalProvider,
+    NetworkProvider,
+    Push,
+    Dados
   ]
 })
 export class AppModule {}

@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="preto">
+    <ion-buttons left>
+        <button ion-button icon-only color="light" (click)="voltar()"><ion-icon name="arrow-back"></ion-icon></button>
+    </ion-buttons>
+    <ion-title>Ministério</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="corpo">
+  <div class="head">
+    <img src="assets/img/logo.png">
+  </div>
+  <div class="body">
+    <div class="box">
+        <p [innerHTML]="texto"></p>
+    </div>
+  </div>
+</ion-content>

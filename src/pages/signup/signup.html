@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="preto">
+    <ion-title>Novo Usuário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="corpo">
+  <ion-list class="form">
+    <div class="logo">
+      <img src="assets/img/logo.png">
+    </div>
+
+    <form>
+      <ion-item>
+        <ion-input  name="name" placeholder="Nome" type="text"  spellcheck="false" autocapitalize="off" required [(ngModel)]="user.nome">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="username" placeholder="Email" #email type="text"  spellcheck="false" autocapitalize="off" required [(ngModel)]="credencial.email">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input name="password" placeholder="Senha" #senha type="password" autocapitalize="off" required [(ngModel)]="credencial.senha">
+        </ion-input>
+      </ion-item>
+
+      <ion-row responsive-sm>
+        <ion-col>
+          <button ion-button  type="submit" color="vermelhobtn" block (click)="doRegister()">Cadastrar</button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
+</ion-content>

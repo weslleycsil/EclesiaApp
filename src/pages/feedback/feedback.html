@@ -1,0 +1,48 @@
+<ion-header>
+
+<ion-toolbar color="preto">
+    <ion-title>
+      FeedBack
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="close()">
+        <ion-icon name="md-close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="feedback" (ngSubmit)="enviarFeed()">
+    <ion-list>
+      <ion-list-header>
+        Nos Ajude com seu FeedBack
+      </ion-list-header>
+      <ion-item>
+        <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea rows="4" placeholder="Seu FeedBack" formControlName="texto"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-range min="0" max="5" step="1" snaps="true" [(ngModel)]="star" color="ouro" (ionChange)="mudar()"  [ngModelOptions]="{standalone: true}">
+          <ion-icon range-left small color="ouro" name="star-outline"></ion-icon>
+          <ion-icon range-right color="ouro" name="star"></ion-icon>
+        </ion-range>
+      </ion-item>
+      <ion-item style="text-align: center;">
+        <h3>Como você avalia nosso App?</h3>
+        <ion-icon color="ouro" name="star" *ngFor="let n of starsOn"></ion-icon>
+        <ion-icon color="ouro" name="star-outline" *ngFor="let n of starsOff"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <button ion-button block large [disabled]="feedback.invalid">Enviar</button>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
