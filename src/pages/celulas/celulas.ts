@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 
 /*import { NetworkProvider } from '../../providers/network-provider';
-import { CelulasMapPage } from '../celulas-map/celulas-map';
+import { CelulasMapPage } from '../celulas-map/celulas-map'; Launch Navigator
 import { CelulasListPage } from '../celulas-list/celulas-list';*/
 
 @Component({

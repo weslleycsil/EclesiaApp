@@ -12,6 +12,8 @@ import { PayPalProvider } from '../providers/pay-pal/pay-pal';
 import { NetworkProvider } from '../providers/network-provider';
 import { Push } from '../providers/push';
 import { Dados } from '../providers/dados';
+import { LoginProvider } from '../providers/login-provider';
+import { FacebookProvider } from '../providers/facebook';
 
 //paginas
 import { MyApp } from './app.component';
@@ -30,6 +32,23 @@ import { AppVersion } from '@ionic-native/app-version';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { LaunchReview } from '@ionic-native/launch-review';
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+import { LaunchNavigator } from '@ionic-native/launch-navigator';
+import { SocialSharing } from '@ionic-native/social-sharing';
+//import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links';
+
+
+//firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCixxMQwUqZvjwgaclFOl7jaNGaY1GzKlk",
+    authDomain: "appeclesia-5a1bd.firebaseapp.com",
+    databaseURL: "https://appeclesia-5a1bd.firebaseio.com",
+    storageBucket: "appeclesia-5a1bd.appspot.com",
+    messagingSenderId: "228173217601"
+};
 
 
 
@@ -49,7 +68,10 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -65,15 +87,20 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
   providers: [
     StatusBar,
     SplashScreen,
+    AngularFireDatabase,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AppVersion,
-    InAppBrowser,
-    LaunchReview,
     PayPal,
     PayPalProvider,
     NetworkProvider,
     Push,
-    Dados
+    Dados,
+    LoginProvider,
+    FacebookProvider,
+    AppVersion,
+    InAppBrowser,
+    LaunchReview,
+    LaunchNavigator,
+    SocialSharing
   ]
 })
 export class AppModule {}

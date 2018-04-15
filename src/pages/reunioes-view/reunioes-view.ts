@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { SocialSharing } from 'ionic-native';
 
 @Component({
   selector: 'page-reunioes-view',

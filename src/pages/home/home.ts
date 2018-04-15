@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, PopoverController, AlertController, ToastController, ActionSheetController, Platform } from 'ionic-angular';
 
+//pages
 import { SobrePage } from './../sobre/sobre';
 
+//plugins
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 
 @Component({
@@ -21,7 +24,8 @@ export class HomePage {
     public alerCtrl: AlertController,
     public toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController,
-    public platform: Platform
+    public platform: Platform,
+    private socialSharing: SocialSharing
   ) {
     this.pages = [
       //{ title: 'LoginPage', component: LoginPage},
@@ -111,7 +115,7 @@ export class HomePage {
   }
 
   verLogin(){
-    return true;
+    return false;
   }
 
 }
