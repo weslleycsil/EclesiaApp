@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController, PopoverController, AlertController, ToastController, ActionSheetController, Platform } from 'ionic-angular';
+import { NavController, PopoverController, ModalController, AlertController, ToastController, ActionSheetController, Platform } from 'ionic-angular';
 
 //pages
 import { SobrePage } from './../sobre/sobre';
 import { SubmenuPage } from '../submenu/submenu';
 import { FeedbackPage } from '../feedback/feedback';
 import { ContatoPage } from '../contato/contato';
+import { IgrejaPage } from '../igreja/igreja';
+import { ReunioesPage } from '../reunioes/reunioes';
+
 
 
 
@@ -29,6 +32,7 @@ export class HomePage {
     public navCtrl: NavController,
     private iab: InAppBrowser,
     private popoverCtrl: PopoverController,
+    public modalCtrl: ModalController,
     public alerCtrl: AlertController,
     public toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController,
@@ -40,9 +44,9 @@ export class HomePage {
       //{ title: 'LoginPage', component: LoginPage},
       //{ title: 'Papojovem', component: PapojovemPage},
       //{ title: 'Celulas', component: CelulasPage},
-      //{ title: 'Reunioes', component: ReunioesPage},
+      { title: 'Reunioes', component: ReunioesPage},
       //{ title: 'Agenda', component: AgendaPage},
-      //{ title: 'Aigreja', component: IgrejaPage},
+      { title: 'Aigreja', component: IgrejaPage},
       //{ title: 'Comochegar', component: LocalizarPage},
       { title: 'Feedback', component: FeedbackPage},
       { title: 'Sobre', component: SobrePage},
@@ -60,7 +64,12 @@ export class HomePage {
   }
 
   abrir(pagina){
-    this.navCtrl.push(this.search(pagina));
+    if((pagina =='Feedback') || (pagina =='Contato')){
+      let modal = this.modalCtrl.create(this.search(pagina));
+      modal.present();
+    } else {
+      this.navCtrl.push(this.search(pagina));
+    }
   }
 
   share(){}

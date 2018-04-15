@@ -23,17 +23,33 @@ import { DadosProvider } from '../providers/dados-provider';
 //paginas
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { SobrePage } from './../pages/sobre/sobre';
-import { PerfilPage } from './../pages/perfil/perfil';
+import { SubmenuPage } from './../pages/submenu/submenu';
+
+//home 1
+import { ReunioesPage } from '../pages/reunioes/reunioes';
+import { CelulasPage } from '../pages/celulas/celulas';
+
+//home 2
+import { IgrejaPage } from './../pages/igreja/igreja';
+import { ContatoPage } from './../pages/contato/contato';
+
+//home 3
+
+
+//outras
 import { ContaPage } from './../pages/conta/conta';
 import { PayPage } from './../pages/pay/pay';
-import { CelulasPage } from '../pages/celulas/celulas';
-import { ReunioesPage } from '../pages/reunioes/reunioes';
-import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
-import { IgrejaPage } from './../pages/igreja/igreja';
-import { SubmenuPage } from './../pages/submenu/submenu';
+
+//submenupages
+import { SobrePage } from './../pages/sobre/sobre';
+import { PerfilPage } from './../pages/perfil/perfil';
 import { FeedbackPage } from './../pages/feedback/feedback';
-import { ContatoPage } from './../pages/contato/contato';
+
+//Subpages
+import { MinisterioPage } from './../pages/ministerio/ministerio';
+import { PastorPage } from './../pages/pastor/pastor';
+
+import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
 
 
 
@@ -79,7 +95,9 @@ export const firebaseConfig = {
     IgrejaPage,
     SubmenuPage,
     FeedbackPage,
-    ContatoPage
+    ContatoPage,
+    MinisterioPage,
+    PastorPage
   ],
   imports: [
     BrowserModule,
@@ -102,7 +120,12 @@ export const firebaseConfig = {
     CelulasPage,
     SubmenuPage,
     FeedbackPage,
-    ContatoPage
+    ContatoPage,
+    IgrejaPage,
+    MinisterioPage,
+    PastorPage,
+    ReunioesPage,
+    ReunioesViewPage
   ],
   providers: [
     StatusBar,
