@@ -1,14 +1,9 @@
-import {
-  Component
-} from '@angular/core';
-import {
-  NavController,
-  NavParams
-} from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
 
-import {
-  ReunioesViewPage
-} from '../reunioes-view/reunioes-view'
+import { ReunioesViewPage } from '../reunioes-view/reunioes-view'
+
+import { DadosProvider } from './../../providers/dados-provider';
 
 
 @Component({
@@ -21,65 +16,13 @@ export class ReunioesPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    private dados: DadosProvider
   ) {
-    this.listReunioes = [{
-        "dia": "Domingo",
-        "reuniao": [{
-            "foto": "",
-            "horario": "9",
-            "nome": "Escola Ministerial"
-          },
-          {
-            "foto": "",
-            "horario": "10",
-            "nome": "Tadel"
-          },
-          {
-            "foto": "",
-            "horario": "18",
-            "nome": "Culto de Celebração"
-          }
-        ]
-      },
-      {
-        "dia": "Terça",
-        "reuniao": [{
-          "foto": "",
-          "horario": "20",
-          "nome": "Células de Terça"
-        }]
-      },
-      {
-        "dia": "Quinta",
-        "reuniao": [{
-          "foto": "",
-          "horario": "20",
-          "nome": "Culto de Avivamento"
-        }]
-      },
-      {
-        "dia": "Sexta",
-        "reuniao": [{
-          "foto": "",
-          "horario": "20",
-          "nome": "Células de Sexta"
-        }]
-      },
-      {
-        "dia": "Sábado",
-        "reuniao": [{
-          "foto": "",
-          "horario": "19:30",
-          "nome": "Programação Jovem"
-        }]
-      }
-    ];
+    this.listReunioes = this.dados.getReunioes();
   }
 
   verInfo(item) {
-    this.navCtrl.push(ReunioesViewPage, {
-      item
-    });
+    this.navCtrl.push(ReunioesViewPage, {item});
   }
 
 
