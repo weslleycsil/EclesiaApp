@@ -9,8 +9,11 @@ import { Usuario } from '../models/user';
 //providers
 import { Push } from './push';
 
-//plugin
+//plugins
 import firebase from 'firebase';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 
 
 
@@ -22,12 +25,13 @@ export class LoginProvider {
   public usuario: Usuario;
 
   constructor(
-    private push: Push
+    private push: Push,
+    private afAuth: AngularFireAuth,
+    private afData: AngularFireDatabase
   ) {
-    this.userProfile = firebase.database().ref('/userProfile');
+    this.userProfile = this.afData.database.ref('/userProfile');
     this.provedor = new firebase.auth.FacebookAuthProvider();
     this.usuario = new Usuario();
-    this.provedor.addScope('user_birthday');
   }
 
   registrar(credencial: Credencial, usuario: Usuario): any{
@@ -43,20 +47,20 @@ export class LoginProvider {
   }
 
   login(credencial: Credencial): any {
-    return firebase.auth().signInWithEmailAndPassword(credencial.email,credencial.senha);
+    return this.afAuth.auth.signInWithEmailAndPassword(credencial.email,credencial.senha);
   }
 
   logoff(){
-    firebase.auth().signOut();
+    this.afAuth.auth.signOut();
   }
 
   resetPassword(credencial: Credencial): any {
-  return firebase.auth().sendPasswordResetEmail(credencial.email);
+    return this.afAuth.auth.sendPasswordResetEmail(credencial.email);
   }
 
   facebook(token, pushId, successCallback, errorCallback){
     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(token);
-    firebase.auth().signInWithCredential(facebookCredential).then((success)=>{
+    this.afAuth.auth.signInWithCredential(facebookCredential).then((success)=>{
       let data :any;
       data = success;
       this.setUserFace(data.providerData[0],pushId);
