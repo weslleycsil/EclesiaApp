@@ -27,7 +27,9 @@ import { SubmenuPage } from './../pages/submenu/submenu';
 
 //home 1
 import { ReunioesPage } from '../pages/reunioes/reunioes';
-import { CelulasPage } from '../pages/celulas/celulas';
+import { CelulasPage } from '../pages/celulas/celulas'; //<------ Por Ultimo
+import { AgendaPage } from '../pages/agenda/agenda';
+
 
 //home 2
 import { IgrejaPage } from './../pages/igreja/igreja';
@@ -49,6 +51,7 @@ import { FeedbackPage } from './../pages/feedback/feedback';
 import { MinisterioPage } from './../pages/ministerio/ministerio';
 import { PastorPage } from './../pages/pastor/pastor';
 
+import { AgendaViewPage } from '../pages/agenda-view/agenda-view';
 import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
 
 
@@ -97,7 +100,9 @@ export const firebaseConfig = {
     FeedbackPage,
     ContatoPage,
     MinisterioPage,
-    PastorPage
+    PastorPage,
+    AgendaPage,
+    AgendaViewPage
   ],
   imports: [
     BrowserModule,
@@ -125,7 +130,9 @@ export const firebaseConfig = {
     MinisterioPage,
     PastorPage,
     ReunioesPage,
-    ReunioesViewPage
+    ReunioesViewPage,
+    AgendaPage,
+    AgendaViewPage
   ],
   providers: [
     StatusBar,

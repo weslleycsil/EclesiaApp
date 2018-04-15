@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { NgZone } from '@angular/core';
 
 //providers
 import { LocalProvider } from './local-provider';
 import { EventosProvider } from './eventos';
+
+//plugins
+import firebase from 'firebase';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 
 
 @Injectable()
@@ -12,11 +18,15 @@ export class DadosProvider {
   private listReunioesSG = [];
   private listReunioesCF = [];
   private l;
+  private zone: NgZone;
 
   constructor(
     private local: LocalProvider,
-    private eventos: EventosProvider) {
-      //console.log('Provider Dados');
+    private eventos: EventosProvider,
+    private afData: AngularFireDatabase
+  ) {
+    //console.log('Provider Dados');
+    this.zone = new NgZone({});
     this.atualizaIgreja();
 
     this.listReunioesSG = [
@@ -109,7 +119,6 @@ export class DadosProvider {
         this.atualizaIgreja()
       }
     });
-
   }
 
   getReunioes(){
@@ -158,6 +167,24 @@ export class DadosProvider {
     } else if(this.l == "cf"){
       return "<p>ver dados novos</p>";
     }
+  }
+
+  getEventos(successCallback, errorCallback){
+    let link = "/"+this.l+"/events";
+    let ref = this.afData.database.ref(link);
+    let eventsList = [];
+
+		ref.on('child_added', (snapshot) =>{
+			this.zone.run( () =>{
+				let objeto = snapshot.val();
+
+        eventsList.push(objeto);
+
+      });
+      successCallback(eventsList);
+    }, error => {
+      errorCallback(error);
+    });
   }
 
   atualizaIgreja(){

@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar color="preto">
+    <ion-title>{{ event.nome }}</ion-title>
+     <ion-buttons right>
+      <button ion-button icon-only color="royal">
+        <ion-icon name="md-share"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="corpo">
+  <ion-list class="box">
+    <ion-grid>
+      <ion-row class="flex">
+        <ion-col>
+          <!-- ################ Conteudo Dinamico ################ -->
+          <ion-card class="card">
+            <img src="{{event.foto}}"/>
+            <ion-card-content>
+              <ion-card-title>
+                {{ event.nome }}
+                </ion-card-title>
+              <p [innerHTML]="event.texto"></p>
+            </ion-card-content>
+          </ion-card>
+          <!-- ################ Conteudo Dinamico ################ -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+</ion-content>

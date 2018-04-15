@@ -8,6 +8,8 @@ import { FeedbackPage } from '../feedback/feedback';
 import { ContatoPage } from '../contato/contato';
 import { IgrejaPage } from '../igreja/igreja';
 import { ReunioesPage } from '../reunioes/reunioes';
+import { AgendaPage } from '../agenda/agenda';
+
 
 
 
@@ -45,7 +47,7 @@ export class HomePage {
       //{ title: 'Papojovem', component: PapojovemPage},
       //{ title: 'Celulas', component: CelulasPage},
       { title: 'Reunioes', component: ReunioesPage},
-      //{ title: 'Agenda', component: AgendaPage},
+      { title: 'Agenda', component: AgendaPage},
       { title: 'Aigreja', component: IgrejaPage},
       //{ title: 'Comochegar', component: LocalizarPage},
       { title: 'Feedback', component: FeedbackPage},

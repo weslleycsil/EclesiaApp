@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar color="preto">
+    <ion-title>#Eventos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="corpo">
+  <div class="head">
+    <img src="assets/img/logo.png">
+  </div>
+  <div class="body">
+    <div class="box">
+      <ion-slides  pager="true">
+        <ion-slide *ngFor="let evento of eventsList" (click)="verInfo(evento)">
+          <img [src]="evento.foto">
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+</ion-content>
