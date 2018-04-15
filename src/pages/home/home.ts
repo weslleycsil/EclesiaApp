@@ -4,11 +4,17 @@ import { NavController, PopoverController, AlertController, ToastController, Act
 //pages
 import { SobrePage } from './../sobre/sobre';
 import { SubmenuPage } from '../submenu/submenu';
+import { FeedbackPage } from '../feedback/feedback';
+import { ContatoPage } from '../contato/contato';
+
 
 
 //plugins
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SocialSharing } from '@ionic-native/social-sharing';
+
+//provider
+import { DadosProvider } from '../../providers/dados-provider';
 
 
 @Component({
@@ -27,7 +33,8 @@ export class HomePage {
     public toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
-    private socialSharing: SocialSharing
+    private socialSharing: SocialSharing,
+    private dados: DadosProvider
   ) {
     this.pages = [
       //{ title: 'LoginPage', component: LoginPage},
@@ -37,9 +44,9 @@ export class HomePage {
       //{ title: 'Agenda', component: AgendaPage},
       //{ title: 'Aigreja', component: IgrejaPage},
       //{ title: 'Comochegar', component: LocalizarPage},
-      //{ title: 'Feedback', component: FeedbackPage},
+      { title: 'Feedback', component: FeedbackPage},
       { title: 'Sobre', component: SobrePage},
-      //{ title: 'Contato', component: ContatoPage}
+      { title: 'Contato', component: ContatoPage}
     ]
   }
 
@@ -69,16 +76,16 @@ export class HomePage {
 
   open(valor){
     if(valor === "youtube"){
-      //this.iab.create(this.dados.getYoutube(),'_system');
+      this.iab.create(this.dados.getYoutube(),'_system');
     } else {
-      //this.iab.create(this.dados.getFace(),'_system',);
+      this.iab.create(this.dados.getFace(),'_system',);
     }
 
   }
   conta(){
     let alert = this.alerCtrl.create({
       title: 'Nossa Conta',
-      message: '',//this.dados.getConta(),
+      message: this.dados.getConta(),
       buttons: ['Ok']
     });
     alert.present();

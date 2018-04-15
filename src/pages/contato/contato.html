@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-toolbar color="preto">
+      <ion-title>
+        Contato
+      </ion-title>
+      <ion-buttons start>
+        <button ion-button (click)="close()">
+          <ion-icon name="md-close"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+
+  </ion-header>
+
+
+  <ion-content padding>
+    <form [formGroup]="contato" (ngSubmit)="enviarContato()">
+      <ion-list>
+        <ion-list-header>
+          Entre em Contato Conosco
+        </ion-list-header>
+        <ion-item>
+          <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="text" placeholder="Assunto" formControlName="assunto"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-textarea rows="4" placeholder="Seu texto aqui" formControlName="texto"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <button ion-button block large [disabled]="contato.invalid">Enviar</button>
+        </ion-item>
+      </ion-list>
+    </form>
+  </ion-content>
