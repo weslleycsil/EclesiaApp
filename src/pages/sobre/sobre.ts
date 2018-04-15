@@ -28,7 +28,9 @@ export class SobrePage {
     private iab: InAppBrowser) {
 
       this.versao = new Versao();
-      this.getInfo();
+      if(this.plt.is('cordova')){
+        this.getInfo();
+      }
 
   }
 
@@ -65,10 +67,10 @@ export class SobrePage {
 
   open(p){
     if(p === "legal"){
-      this.iab.create('http://eclesia.tk/legal.html','_system');
+      this.iab.create('http://comunidadeeclesia.tk/legal.html','_system');
     }
     else if (p === "site"){
-      this.iab.create('http://eclesia.tk/','_system');
+      this.iab.create('http://comunidadeeclesia.tk/','_system');
     }
     else if (p === "sitetw"){
       this.iab.create('http://twcreativs.com.br','_system');
