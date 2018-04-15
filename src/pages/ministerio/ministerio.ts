@@ -1,6 +1,7 @@
-import { Dados } from '../../providers/dados';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+
+import { DadosProvider } from './../../providers/dados-provider';
 
 @Component({
   selector: 'page-ministerio',
@@ -11,7 +12,7 @@ export class MinisterioPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public dados: Dados) {
+    public dados: DadosProvider) {
       this.texto = this.dados.getMinisterio();
     }
 

@@ -13,9 +13,11 @@ import { ExpandableComponent } from './../components/expandable/expandable';
 import { PayPalProvider } from '../providers/pay-pal/pay-pal';
 import { NetworkProvider } from '../providers/network-provider';
 import { Push } from '../providers/push';
-import { Dados } from '../providers/dados';
 import { LoginProvider } from '../providers/login-provider';
 import { FacebookProvider } from '../providers/facebook';
+import { LocalProvider } from './../providers/local-provider';
+import { EventosProvider } from './../providers/eventos';
+import { DadosProvider } from '../providers/dados-provider';
 
 
 //paginas
@@ -31,6 +33,8 @@ import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
 import { IgrejaPage } from './../pages/igreja/igreja';
 import { SubmenuPage } from './../pages/submenu/submenu';
 import { FeedbackPage } from './../pages/feedback/feedback';
+import { ContatoPage } from './../pages/contato/contato';
+
 
 
 //plugins
@@ -42,7 +46,7 @@ import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { SocialSharing } from '@ionic-native/social-sharing';
 //import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links';
 import { Network } from '@ionic-native/network';
-
+import { IonicStorageModule } from '@ionic/storage';
 
 
 //firebase
@@ -74,12 +78,14 @@ export const firebaseConfig = {
     ReunioesViewPage,
     IgrejaPage,
     SubmenuPage,
-    FeedbackPage
+    FeedbackPage,
+    ContatoPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule
@@ -95,7 +101,8 @@ export const firebaseConfig = {
     PayPage,
     CelulasPage,
     SubmenuPage,
-    FeedbackPage
+    FeedbackPage,
+    ContatoPage
   ],
   providers: [
     StatusBar,
@@ -106,7 +113,6 @@ export const firebaseConfig = {
     PayPalProvider,
     NetworkProvider,
     Push,
-    Dados,
     LoginProvider,
     FacebookProvider,
     AppVersion,
@@ -114,7 +120,10 @@ export const firebaseConfig = {
     LaunchReview,
     LaunchNavigator,
     SocialSharing,
-    Network
+    Network,
+    LocalProvider,
+    EventosProvider,
+    DadosProvider
   ]
 })
 export class AppModule {}

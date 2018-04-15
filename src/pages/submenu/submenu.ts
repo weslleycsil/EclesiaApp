@@ -8,7 +8,7 @@ import { FeedbackPage } from '../feedback/feedback';
 
 
 //providers
-//import { Local } from '../../providers/local';
+import { LocalProvider } from '../../providers/local-provider';
 import { LoginProvider } from '../../providers/login-provider';
 
 
@@ -27,7 +27,7 @@ export class SubmenuPage {
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
     public login: LoginProvider,
-    /*public local: Local*/) {}
+    public local: LocalProvider) {}
   close() {
     this.viewCtrl.dismiss();
   }
@@ -63,7 +63,49 @@ export class SubmenuPage {
   }
 
   change(){
-
+    this.close();
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Nossas Igrejas',
+      buttons: [
+        {
+          text: 'São Gonçalo',
+          icon: null,
+          handler: () => {
+            this.local.changeLocal("sg");
+            this.presentToast('bottom','São Gonçalo');
+          }
+        },{
+          text: 'Cabo Frio',
+          icon: null,
+          handler: () => {
+            this.local.changeLocal("cf");
+            this.presentToast('bottom','Cabo Frio');
+          }
+        },{
+          text: 'Arraial do Cabo',
+          icon: null,
+          handler: () => {
+            this.local.changeLocal("ac");
+            this.presentToast('bottom','Arrail do Cabo');
+          }
+        },{
+          text: 'Buzios',
+          icon: null,
+          handler: () => {
+            this.local.changeLocal("bz");
+            this.presentToast('bottom','Buzios');
+          }
+        },{
+          text: 'Cancelar',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: !this.platform.is('ios') ? 'close' : null,
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
   presentToast(position: string, texto: string) {

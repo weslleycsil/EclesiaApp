@@ -1,17 +1,24 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Storage } from '@ionic/storage';
+
+//providers
+import { LocalProvider } from './local-provider';
+import { EventosProvider } from './eventos';
 
 
 @Injectable()
-export class Dados {
+export class DadosProvider {
 
-  public listReunioesSG = [];
-  public listReunioesCF = [];
-  public l;
+  private listReunioesSG = [];
+  private listReunioesCF = [];
+  private l;
 
-  constructor(public storage: Storage) {
-    console.log("Hello dados!");
+  constructor(
+    private local: LocalProvider,
+    private eventos: EventosProvider) {
+      //console.log('Provider Dados');
+    this.atualizaIgreja();
+
     this.listReunioesSG = [
       {
         "dia": "Domingo",
@@ -94,14 +101,18 @@ export class Dados {
         }]
       }
     ];
-    this.storage.get('igreja').then((value) => {
-      this.l = value;
-    }).catch((empty) => {
-        console.log(empty);
+
+    this.eventos.eventChangeIgreja.subscribe(event => {
+      //console.log('verificando eventos...');
+      if(event == true){
+        //houve mudança
+        this.atualizaIgreja()
+      }
     });
+
   }
+
   getReunioes(){
-    this.getL();
     if(this.l == "sg"){
       return this.listReunioesSG;
     } else if(this.l == "cf"){
@@ -110,7 +121,6 @@ export class Dados {
   }
 
   getMinisterio(){
-    this.getL();
     if(this.l == "sg"){
       return "Temos como missão amar a Deus sobre todas as coisas e servir as pessoas com Amor (Mt 22:37-39), ganhar almas, cuidar, discipular, batizá-las em nome do Pai do Filho e do Espirito Santo. \n Queremos ser referência de pregação da palavra onde estivermos estabelecidos e ter lares abertos para a propagação do Evangelho.";
     } else if(this.l == "cf"){
@@ -119,7 +129,6 @@ export class Dados {
   }
 
   getPastor(){
-    this.getL();
     if(this.l == "sg"){
 
     } else if(this.l == "cf"){
@@ -128,7 +137,6 @@ export class Dados {
   }
 
   getYoutube(){
-    this.getL();
     if(this.l == "sg"){
       return "https://www.youtube.com/channel/UCRHjRWKrqcKl77f7x6wHKsQ";
     } else if(this.l == "cf"){
@@ -137,7 +145,6 @@ export class Dados {
   }
 
   getFace(){
-    this.getL();
     if(this.l == "sg"){
       return "https://www.facebook.com/eclesiacolubande/";
     } else if(this.l == "cf"){
@@ -146,7 +153,6 @@ export class Dados {
   }
 
   getConta(){
-    this.getL();
     if(this.l == "sg"){
       return "<p><strong>Comunidade Evangélica Eclesia</strong><br><br>Banco: 341 Itaú<br>AG.  6895<br>C.C. 26103-7<br>CNPJ:26.317.283/0001-93</p>";
     } else if(this.l == "cf"){
@@ -154,14 +160,10 @@ export class Dados {
     }
   }
 
-  getL(){
-    console.log("obtendo L ");
-    this.storage.get('igreja').then((value) => {
-      this.l = value;
-      console.log(value);
-    }).catch((empty) => {
-        console.log(empty);
-    });
+  atualizaIgreja(){
+    this.l = this.local.getIgreja();
+    //console.log('Igreja Atualizada ',this.l);
+    this.eventos.setChangeIgreja(false);
   }
 
 
