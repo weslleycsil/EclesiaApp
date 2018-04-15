@@ -3,6 +3,8 @@ import { NavController, PopoverController, AlertController, ToastController, Act
 
 //pages
 import { SobrePage } from './../sobre/sobre';
+import { SubmenuPage } from '../submenu/submenu';
+
 
 //plugins
 import { InAppBrowser } from '@ionic-native/in-app-browser';
@@ -55,8 +57,15 @@ export class HomePage {
   }
 
   share(){}
-  presentPopover(ev) {}
-  presentPop(ev) {}
+
+  presentPopover(ev) {
+
+    let popover = this.popoverCtrl.create(SubmenuPage);
+
+    popover.present({
+      ev: ev
+    });
+  }
 
   open(valor){
     if(valor === "youtube"){

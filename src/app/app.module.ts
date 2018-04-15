@@ -26,6 +26,7 @@ import { CelulasPage } from '../pages/celulas/celulas';
 import { ReunioesPage } from '../pages/reunioes/reunioes';
 import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
 import { IgrejaPage } from './../pages/igreja/igreja';
+import { SubmenuPage } from './../pages/submenu/submenu';
 
 //plugins
 import { AppVersion } from '@ionic-native/app-version';
@@ -64,7 +65,8 @@ export const firebaseConfig = {
     CelulasPage,
     ReunioesPage,
     ReunioesViewPage,
-    IgrejaPage
+    IgrejaPage,
+    SubmenuPage
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,8 @@ export const firebaseConfig = {
     ContaPage,
     ExpandableComponent,
     PayPage,
-    CelulasPage
+    CelulasPage,
+    SubmenuPage
   ],
   providers: [
     StatusBar,
