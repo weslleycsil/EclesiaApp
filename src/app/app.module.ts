@@ -4,6 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { HttpClientModule } from '@angular/common/http';
+
 //componentes
 import { ExpandableComponent } from './../components/expandable/expandable';
 
@@ -14,6 +16,7 @@ import { Push } from '../providers/push';
 import { Dados } from '../providers/dados';
 import { LoginProvider } from '../providers/login-provider';
 import { FacebookProvider } from '../providers/facebook';
+
 
 //paginas
 import { MyApp } from './app.component';
@@ -27,6 +30,8 @@ import { ReunioesPage } from '../pages/reunioes/reunioes';
 import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
 import { IgrejaPage } from './../pages/igreja/igreja';
 import { SubmenuPage } from './../pages/submenu/submenu';
+import { FeedbackPage } from './../pages/feedback/feedback';
+
 
 //plugins
 import { AppVersion } from '@ionic-native/app-version';
@@ -36,6 +41,8 @@ import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal
 import { LaunchNavigator } from '@ionic-native/launch-navigator';
 import { SocialSharing } from '@ionic-native/social-sharing';
 //import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links';
+import { Network } from '@ionic-native/network';
+
 
 
 //firebase
@@ -66,10 +73,12 @@ export const firebaseConfig = {
     ReunioesPage,
     ReunioesViewPage,
     IgrejaPage,
-    SubmenuPage
+    SubmenuPage,
+    FeedbackPage
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
@@ -85,7 +94,8 @@ export const firebaseConfig = {
     ExpandableComponent,
     PayPage,
     CelulasPage,
-    SubmenuPage
+    SubmenuPage,
+    FeedbackPage
   ],
   providers: [
     StatusBar,
@@ -103,7 +113,8 @@ export const firebaseConfig = {
     InAppBrowser,
     LaunchReview,
     LaunchNavigator,
-    SocialSharing
+    SocialSharing,
+    Network
   ]
 })
 export class AppModule {}

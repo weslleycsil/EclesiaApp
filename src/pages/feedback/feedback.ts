@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { NavController, NavParams, ViewController, AlertController} from 'ionic-angular';
-import { Http } from '@angular/http';
+
+import { HttpClient } from '@angular/common/http';
 
 import { NetworkProvider } from '../../providers/network-provider';
 
@@ -21,7 +22,7 @@ export class FeedbackPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public http: Http,
+    public http: HttpClient,
     public viewCtrl: ViewController,
     public alertCtrl: AlertController,
     public netInfo: NetworkProvider,
@@ -44,8 +45,8 @@ export class FeedbackPage {
     for(var i = 0; i < this.star; i += 1){
       this.starsOn.push(i);
     }
-    for(var i = this.star; i < 5; i += 1){
-      this.starsOff.push(i);
+    for(var i2 = this.star; i2 < 5; i2 += 1){
+      this.starsOff.push(i2);
     }
   }
 
@@ -86,7 +87,7 @@ export class FeedbackPage {
           alert.present();
           this.close();
         }, error =>{
-          //console.log(error);
+          console.log(error);
           let alert = this.alertCtrl.create({
             title: 'Houve um Erro',
             message: '<p>Desculpe o inconveniente, estamos trabalhando para resolver esse problema.<br>Tente novamente mais tarde.</p>',
