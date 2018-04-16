@@ -35,6 +35,7 @@ import { LocalizarPage } from '../pages/localizar/localizar';
 //home 2
 import { IgrejaPage } from './../pages/igreja/igreja';
 import { ContatoPage } from './../pages/contato/contato';
+import { PapojovemPage } from './../pages/papojovem/papojovem';
 
 //home 3
 
@@ -54,6 +55,8 @@ import { PastorPage } from './../pages/pastor/pastor';
 
 import { AgendaViewPage } from '../pages/agenda-view/agenda-view';
 import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
+import { PostblogPage } from './../pages/papojovem/postblog/postblog';
+
 
 
 
@@ -105,7 +108,9 @@ export const firebaseConfig = {
     PastorPage,
     AgendaPage,
     AgendaViewPage,
-    LocalizarPage
+    LocalizarPage,
+    PapojovemPage,
+    PostblogPage
   ],
   imports: [
     BrowserModule,
@@ -136,7 +141,9 @@ export const firebaseConfig = {
     ReunioesViewPage,
     AgendaPage,
     AgendaViewPage,
-    LocalizarPage
+    LocalizarPage,
+    PapojovemPage,
+    PostblogPage
   ],
   providers: [
     StatusBar,

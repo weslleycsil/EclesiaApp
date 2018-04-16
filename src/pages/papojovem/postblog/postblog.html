@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar color="preto">
+    <ion-title>Papo Jovem</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="corpo">
+  <ion-card>
+
+	<!--<img *ngIf="post.featured_image_urls.medium" [src]="post.featured_image_urls.medium" class="featured-image" />-->
+
+    <ion-card-content>
+      <ion-card-title>
+        <b>{{post.title.rendered}}</b>
+      </ion-card-title>
+      <p [innerHTML]="post.content.rendered"></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

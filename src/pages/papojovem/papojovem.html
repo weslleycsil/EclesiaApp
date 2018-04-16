@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar color="preto">
+    <ion-title>Papo Jovem</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="corpo">
+  <ion-card *ngFor="let item of items" (click)="post(item)">
+    <img *ngIf="item.featured_image_url" src="{{item.featured_image_url}}"/>
+    <img *ngIf="!item.featured_image_url" src="assets/img/ndisp.png"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{item.title.rendered}}
+        </ion-card-title>
+        <p [innerHTML]="vejaMais(100, item.excerpt.rendered)"></p>
+    </ion-card-content>
+  </ion-card>
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

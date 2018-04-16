@@ -212,7 +212,18 @@ export class DadosProvider {
     errorCallback();
   }
 
+  getBlogUrl(successCallback, errorCallback){
+    let url: any;
 
+    if(this.l == "sg"){
+      url = "http://youngimpact.comunidadeeclesia.tk/wp-json/wp/v2/posts";
+    } else if(this.l == "cf"){
+      url = "";
+    }
+    successCallback(url);
+    errorCallback();
+
+  }
 
   atualizaIgreja(){
     this.l = this.local.getIgreja();
