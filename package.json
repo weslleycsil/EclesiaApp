@@ -23,6 +23,7 @@
     "@ionic-native/app-version": "^4.5.2",
     "@ionic-native/core": "^4.5.2",
     "@ionic-native/facebook": "^4.6.0",
+    "@ionic-native/geolocation": "^4.7.0",
     "@ionic-native/in-app-browser": "^4.5.2",
     "@ionic-native/launch-navigator": "^4.7.0",
     "@ionic-native/launch-review": "^4.5.2",

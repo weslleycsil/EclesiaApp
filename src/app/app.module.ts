@@ -29,6 +29,7 @@ import { SubmenuPage } from './../pages/submenu/submenu';
 import { ReunioesPage } from '../pages/reunioes/reunioes';
 import { CelulasPage } from '../pages/celulas/celulas'; //<------ Por Ultimo
 import { AgendaPage } from '../pages/agenda/agenda';
+import { LocalizarPage } from '../pages/localizar/localizar';
 
 
 //home 2
@@ -66,6 +67,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 //import { FirebaseDynamicLinks } from '@ionic-native/firebase-dynamic-links';
 import { Network } from '@ionic-native/network';
 import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation';
 
 
 //firebase
@@ -102,7 +104,8 @@ export const firebaseConfig = {
     MinisterioPage,
     PastorPage,
     AgendaPage,
-    AgendaViewPage
+    AgendaViewPage,
+    LocalizarPage
   ],
   imports: [
     BrowserModule,
@@ -132,7 +135,8 @@ export const firebaseConfig = {
     ReunioesPage,
     ReunioesViewPage,
     AgendaPage,
-    AgendaViewPage
+    AgendaViewPage,
+    LocalizarPage
   ],
   providers: [
     StatusBar,
@@ -153,7 +157,8 @@ export const firebaseConfig = {
     Network,
     LocalProvider,
     EventosProvider,
-    DadosProvider
+    DadosProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

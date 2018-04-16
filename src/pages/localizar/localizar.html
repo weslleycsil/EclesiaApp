@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="preto">
+    <ion-title>#ComoChegar</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="corpo">
+  <div #map id="map">
+    <div *ngIf="loadImg() === false" class="mapStatic"></div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="preto">
+    <ion-row class="submenu">
+      <ion-col>
+        <button ion-button clear small color="branco" (click)="verTelefone()">
+          <ion-icon name="call"></ion-icon>&nbsp;
+          Contato
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear small color="branco" (click)="verEndereco()">
+          <ion-icon name="information-circle"></ion-icon>&nbsp;
+          Endereço
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button clear small color="branco" (click)="verRota()">
+          <ion-icon name="navigate"></ion-icon>&nbsp;
+          Ir
+        </button>
+      </ion-col>
+
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

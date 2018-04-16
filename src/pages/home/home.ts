@@ -9,8 +9,7 @@ import { ContatoPage } from '../contato/contato';
 import { IgrejaPage } from '../igreja/igreja';
 import { ReunioesPage } from '../reunioes/reunioes';
 import { AgendaPage } from '../agenda/agenda';
-
-
+import { LocalizarPage } from '../localizar/localizar';
 
 
 
@@ -49,7 +48,7 @@ export class HomePage {
       { title: 'Reunioes', component: ReunioesPage},
       { title: 'Agenda', component: AgendaPage},
       { title: 'Aigreja', component: IgrejaPage},
-      //{ title: 'Comochegar', component: LocalizarPage},
+      { title: 'Comochegar', component: LocalizarPage},
       { title: 'Feedback', component: FeedbackPage},
       { title: 'Sobre', component: SobrePage},
       { title: 'Contato', component: ContatoPage}

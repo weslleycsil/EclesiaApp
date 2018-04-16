@@ -187,6 +187,33 @@ export class DadosProvider {
     });
   }
 
+  getInfoMap(successCallback, errorCallback){
+    let dados:any;
+    let image: any;
+
+    if(this.l == "sg"){
+      dados = {
+        lat: -22.83093,
+        lng: -43.01562,
+        telefone: '<p><strong>Igreja Eclesia - SG</strong><br><br>Tel: (21) 3583-2811</p>',
+        endereco: '<p><strong>Igreja Eclesia - SG</strong><br><br>Rua José Mendonça de Campos,<br> N. 551 - Colubande<br>São Gonçalo - RJ</p>'
+      }
+      image = 'link 1';
+    } else if(this.l == "cf"){
+      dados = {
+        lat: -22.83093,
+        lng: -43.01562,
+        telefone: '<p><strong>Igreja Eclesia - CF</strong><br><br>Tel: (21) 3583-2811</p>',
+        endereco: '<p><strong>Igreja Eclesia - CF</strong><br><br>Rua,<br> N. <br>Cabo Frio - RJ</p>'
+      }
+      image = 'link 2';
+    }
+    successCallback({info: dados, link: image});
+    errorCallback();
+  }
+
+
+
   atualizaIgreja(){
     this.l = this.local.getIgreja();
     //console.log('Igreja Atualizada ',this.l);
