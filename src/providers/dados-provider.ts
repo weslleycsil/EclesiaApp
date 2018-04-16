@@ -9,6 +9,7 @@ import { EventosProvider } from './eventos';
 //plugins
 import firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { SubjectSubscriber } from 'rxjs/Subject';
 
 
 
@@ -169,6 +170,7 @@ export class DadosProvider {
     }
   }
 
+  //VERIFICAR REPETICAO
   getEventos(successCallback, errorCallback){
     let link = "/"+this.l+"/events";
     let ref = this.afData.database.ref(link);
@@ -222,6 +224,53 @@ export class DadosProvider {
     }
     successCallback(url);
     errorCallback();
+
+  }
+
+  getCelulas(successCallback, errorCallback){
+    this.getCidadesCel(cidades=>{
+      let listCity = [];
+      const cidadesPromisses = cidades.map(cidade=>{
+
+        let link = "/"+this.l+"/celulas/"+cidade+"/";
+        let ref = this.afData.database.ref(link);
+        let listCelulas = [];
+
+        ref.on('child_added', celula =>{
+          let linkC = "/"+this.l+"/celulas/"+cidade+"/"+celula.key+"/";
+          let ref2 = this.afData.database.ref(linkC);
+          //console.log(cidade)
+          ref2.on("value", function(dados, prevChildKey) {
+            listCelulas.push(dados.val());
+          })
+        });
+        listCity.push({
+          cidade : cidade,
+          celulas : listCelulas
+        })
+      })
+      successCallback(listCity);
+    }, err => errorCallback(err));
+
+  }
+
+
+  //VERIFICAR REPETICAO
+  getCidadesCel(successCallback, errorCallback){
+    let link = "/"+this.l+"/celulas/locais/";
+    let ref = this.afData.database.ref(link);
+    let cidades:any;
+
+    ref.on('value', (snapshot) =>{
+			this.zone.run( () =>{
+        let objeto = snapshot.val();
+        cidades = objeto;
+      });
+      successCallback(cidades);
+    }, error => {
+      errorCallback(error);
+    });
+
 
   }
 

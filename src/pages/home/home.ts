@@ -11,7 +11,7 @@ import { ReunioesPage } from '../reunioes/reunioes';
 import { AgendaPage } from '../agenda/agenda';
 import { LocalizarPage } from '../localizar/localizar';
 import { PapojovemPage } from '../papojovem/papojovem';
-
+import { CelulasPage } from '../celulas/celulas';
 
 
 //plugins
@@ -45,7 +45,7 @@ export class HomePage {
     this.pages = [
       //{ title: 'LoginPage', component: LoginPage},
       { title: 'Papojovem', component: PapojovemPage},
-      //{ title: 'Celulas', component: CelulasPage},
+      { title: 'Celulas', component: CelulasPage},
       { title: 'Reunioes', component: ReunioesPage},
       { title: 'Agenda', component: AgendaPage},
       { title: 'Aigreja', component: IgrejaPage},
