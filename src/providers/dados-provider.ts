@@ -228,34 +228,36 @@ export class DadosProvider {
   }
 
   getCelulas(successCallback, errorCallback){
-    this.getCidadesCel(cidades=>{
-      let listCity = [];
-      const cidadesPromisses = cidades.map(cidade=>{
+    let listCity = [];
+    let celulasArray = [];
 
+    this.getCidadesCel(cidades=>{
+      const cidadesPromisses = cidades.map(cidade=>{
         let link = "/"+this.l+"/celulas/"+cidade+"/";
         let ref = this.afData.database.ref(link);
         let listCelulas = [];
 
-        ref.on('child_added', celula =>{
-          let linkC = "/"+this.l+"/celulas/"+cidade+"/"+celula.key+"/";
-          let ref2 = this.afData.database.ref(linkC);
-          //console.log(cidade)
-          ref2.on("value", function(dados, prevChildKey) {
-            listCelulas.push(dados.val());
+        ref.on('value', celulasList => {
+          celulasList.forEach( celula => {
+            listCelulas.push(celula.val());
+            celulasArray.push(celula.val());
+            //console.log(celula.val());
+            return false;
           })
-        });
+        })
+
         listCity.push({
           cidade : cidade,
           celulas : listCelulas
         })
-      })
-      successCallback(listCity);
-    }, err => errorCallback(err));
+
+      });
+      successCallback({list: listCity, array: celulasArray});
+    },
+    error => errorCallback(error));
 
   }
 
-
-  //VERIFICAR REPETICAO
   getCidadesCel(successCallback, errorCallback){
     let link = "/"+this.l+"/celulas/locais/";
     let ref = this.afData.database.ref(link);
