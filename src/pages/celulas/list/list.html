@@ -11,7 +11,7 @@
   <ion-list no-lines *ngIf="show">
     <ion-item-group *ngFor="let cidade of celulasList">
       <ion-item-divider color="light">{{cidade.cidade}}</ion-item-divider>
-      <button ion-item *ngFor="let celula of cidade.celulas">
+      <button ion-item *ngFor="let celula of cidade.celulas" (click)="verInfo(celula)">
         <ion-avatar item-left>
           <ion-icon name="pin"></ion-icon>
           <br/>
@@ -24,7 +24,7 @@
   </ion-list>
   <ion-list no-lines *ngIf="!show">
       <ion-item-group>
-        <button ion-item *ngFor="let celula of celulasList">
+        <button ion-item *ngFor="let celula of celulasList" (click)="verInfo(celula)">
           <ion-avatar item-left>
             <ion-icon name="pin"></ion-icon>
             <br/>

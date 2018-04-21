@@ -295,6 +295,10 @@ export class DadosProvider {
     return Geolib.convertUnit('km', distance, 2);
   }
 
+  getLocation(){
+    return this.coords;
+  }
+
   atualizaIgreja(){
     this.l = this.local.getIgreja();
     //console.log('Igreja Atualizada ',this.l);

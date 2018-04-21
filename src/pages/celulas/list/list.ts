@@ -4,7 +4,8 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 //provider
 import { DadosProvider } from '../../../providers/dados-provider';
 
-
+//pages
+import { ViewCelulaPage } from './view-celula/view-celula';
 
 @Component({
   selector: 'page-list-celulas',
@@ -33,8 +34,8 @@ export class ListCelulasPage {
 
   }
 
-  verInfo(p){
-
+  verInfo(item){
+    this.navCtrl.push(ViewCelulaPage,{item});
   }
 
   private initializeItems(): void {

@@ -57,6 +57,10 @@ import { AgendaViewPage } from '../pages/agenda-view/agenda-view';
 import { ReunioesViewPage } from '../pages/reunioes-view/reunioes-view';
 import { PostblogPage } from './../pages/papojovem/postblog/postblog';
 import { ListCelulasPage } from './../pages/celulas/list/list';
+import { ViewCelulaPage } from './../pages/celulas/list/view-celula/view-celula';
+
+import { MapaPage } from '../pages/mapa/mapa';
+
 
 
 
@@ -112,7 +116,9 @@ export const firebaseConfig = {
     LocalizarPage,
     PapojovemPage,
     PostblogPage,
-    ListCelulasPage
+    ListCelulasPage,
+    ViewCelulaPage,
+    MapaPage
   ],
   imports: [
     BrowserModule,
@@ -146,7 +152,9 @@ export const firebaseConfig = {
     LocalizarPage,
     PapojovemPage,
     PostblogPage,
-    ListCelulasPage
+    ListCelulasPage,
+    ViewCelulaPage,
+    MapaPage
   ],
   providers: [
     StatusBar,

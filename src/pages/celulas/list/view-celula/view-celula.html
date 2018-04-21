@@ -1,0 +1,42 @@
+<ion-header>
+
+    <ion-navbar color="preto">
+      <ion-title>{{ celula.Nome }}</ion-title>
+       <ion-buttons right>
+        <button ion-button icon-only color="royal">
+          <ion-icon name="md-share"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content padding class="corpo">
+    <ion-card>
+      <img src="{{celula.foto}}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{ celula.Nome }}
+          </ion-card-title>
+          <h3>{{ celula.Lider }}</h3>
+        <p>
+          {{ celula.Endereco }}
+        </p>
+      </ion-card-content>
+      <ion-row no-padding>
+        <ion-col>
+          <button ion-button clear small color="danger" icon-left (click)="verMapa(celula)">
+            <ion-icon name='map'></ion-icon>
+             Mapa
+          </button>
+        </ion-col>
+        <ion-col text-right>
+          <button ion-button clear small color="danger" icon-left (click)="verRota()">
+            <ion-icon name='navigate'></ion-icon>
+            Ir
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-content>
