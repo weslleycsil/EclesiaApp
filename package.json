@@ -46,6 +46,7 @@
     "cordova-plugin-x-socialsharing": "^5.2.1",
     "cordova-sqlite-storage": "^2.3.0",
     "firebase": "^4.12.1",
+    "geolib": "^2.0.24",
     "ionic-angular": "3.9.2",
     "ionicons": "3.0.0",
     "node-sass": "^4.8.3",

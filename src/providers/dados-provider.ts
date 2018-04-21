@@ -10,7 +10,10 @@ import { EventosProvider } from './eventos';
 import firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SubjectSubscriber } from 'rxjs/Subject';
+import { Geolocation } from '@ionic-native/geolocation';
 
+//libs
+import * as Geolib from 'geolib';
 
 
 @Injectable()
@@ -20,13 +23,19 @@ export class DadosProvider {
   private listReunioesCF = [];
   private l;
   private zone: NgZone;
+  private coords: any;
 
   constructor(
     private local: LocalProvider,
     private eventos: EventosProvider,
-    private afData: AngularFireDatabase
+    private afData: AngularFireDatabase,
+    private geolocation: Geolocation
   ) {
-    //console.log('Provider Dados');
+    this.geolocation.getCurrentPosition().then(resp =>{
+      let me = this;
+      me.coords = {latitude: resp.coords.latitude, longitude: resp.coords.longitude};
+      console.log(me.coords);
+    });
     this.zone = new NgZone({});
     this.atualizaIgreja();
 
@@ -231,6 +240,8 @@ export class DadosProvider {
     let listCity = [];
     let celulasArray = [];
 
+    console.log(this.coords);
+
     this.getCidadesCel(cidades=>{
       const cidadesPromisses = cidades.map(cidade=>{
         let link = "/"+this.l+"/celulas/"+cidade+"/";
@@ -239,9 +250,11 @@ export class DadosProvider {
 
         ref.on('value', celulasList => {
           celulasList.forEach( celula => {
-            listCelulas.push(celula.val());
-            celulasArray.push(celula.val());
-            //console.log(celula.val());
+            let cel;
+            cel = celula.val();
+            cel.distance = this.getDistance(this.coords,{latitude: Number(cel.latitude), longitude: Number(cel.longitude)});
+            listCelulas.push(cel);
+            celulasArray.push(cel);
             return false;
           })
         })
@@ -274,6 +287,12 @@ export class DadosProvider {
     });
 
 
+  }
+
+  private getDistance(origin, destination){
+    let distance = Geolib.getDistance(origin, destination);
+    //console.log(distance);
+    return Geolib.convertUnit('km', distance, 2);
   }
 
   atualizaIgreja(){

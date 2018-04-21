@@ -1,18 +1,39 @@
-<ion-content padding class="corpo">
+<ion-header>
+
+    <ion-navbar color="preto">
+      <ion-title>Células</ion-title>
+    </ion-navbar>
+
+  </ion-header>
+
+  <ion-content padding class="corpo">
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <ion-list no-lines>
+  <ion-list no-lines *ngIf="show">
     <ion-item-group *ngFor="let cidade of celulasList">
       <ion-item-divider color="light">{{cidade.cidade}}</ion-item-divider>
       <button ion-item *ngFor="let celula of cidade.celulas">
         <ion-avatar item-left>
           <ion-icon name="pin"></ion-icon>
           <br/>
-          <div class="km">Km</div>
+          <div class="km">{{ celula.distance }} Km</div>
         </ion-avatar>
           <h2>{{ celula.Nome }}</h2>
           <p>{{ celula.Lider }}</p>
       </button>
     </ion-item-group>
   </ion-list>
+  <ion-list no-lines *ngIf="!show">
+      <ion-item-group>
+        <button ion-item *ngFor="let celula of celulasList">
+          <ion-avatar item-left>
+            <ion-icon name="pin"></ion-icon>
+            <br/>
+            <div class="km">{{ celula.distance }} Km</div>
+          </ion-avatar>
+            <h2>{{ celula.Nome }}</h2>
+            <p>{{ celula.Lider }}</p>
+        </button>
+      </ion-item-group>
+    </ion-list>
 </ion-content>
 

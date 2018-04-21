@@ -5,6 +5,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { DadosProvider } from '../../../providers/dados-provider';
 
 
+
 @Component({
   selector: 'page-list-celulas',
   templateUrl: 'list.html'
@@ -14,7 +15,6 @@ export class ListCelulasPage {
   public listCelulasCity = [];
   public listCelulas = [];
   public celulasList:Array<any>;
-  public showCity: boolean;
   public loading:any;
 
   constructor(
@@ -23,22 +23,23 @@ export class ListCelulasPage {
     public loadingCtrl: LoadingController,
     public dados: DadosProvider
   ) {
-      this.showCity = true;
+      this.show = true;
       this.dados.getCelulas((res)=>{
+        console.log(res)
         this.listCelulasCity = res.list;
         this.listCelulas = res.array;
+        this.initializeItems();
       },(error)=>console.log(error));
 
-      console.log(this.listCelulas);
   }
 
   verInfo(p){
 
   }
 
-  initializeItems(): void {
+  private initializeItems(): void {
     this.celulasList = this.listCelulasCity;
-    this.showCity = true;
+    this.show = true;
   }
 
   getItems(searchbar) {
@@ -62,6 +63,8 @@ export class ListCelulasPage {
         return false;
       }
     });
+
+    this.show = false;
 
     console.log(q, this.celulasList.length);
 
