@@ -70,16 +70,17 @@ export class MapaPage {
   }
 
   verRota() {
-    let coords = this.dados.getLocation();
+    this.dados.geoLocation(coords =>{
+      let options: LaunchNavigatorOptions = {
+        start: [coords.latitude, coords.longitude]
+      };
 
-    let options: LaunchNavigatorOptions = {
-      start: [coords.latitude, coords.longitude]
-    };
+      this.launchNavigator.navigate([this.celula.latitude, this.celula.longitude], options).then(
+        success => console.log('Navegador'),
+        error => console.log(error)
+      );
 
-    this.launchNavigator.navigate([this.celula.latitude, this.celula.longitude], options).then(
-      success => console.log('Navegador'),
-      error => console.log(error)
-    );
+    }, err => console.log(err));
   }
 
 }

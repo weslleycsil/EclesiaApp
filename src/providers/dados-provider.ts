@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { NgZone } from '@angular/core';
 
+import { Storage } from '@ionic/storage';
+
 //providers
 import { LocalProvider } from './local-provider';
 import { EventosProvider } from './eventos';
@@ -23,20 +25,17 @@ export class DadosProvider {
   private listReunioesCF = [];
   private l;
   private zone: NgZone;
-  private coords: any;
 
   constructor(
     private local: LocalProvider,
     private eventos: EventosProvider,
     private afData: AngularFireDatabase,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private storage: Storage
   ) {
-    this.geolocation.getCurrentPosition().then(resp =>{
-      let me = this;
-      me.coords = {latitude: resp.coords.latitude, longitude: resp.coords.longitude};
-      console.log(me.coords);
-    });
+
     this.zone = new NgZone({});
+    //this.getCoords();
     this.atualizaIgreja();
 
     this.listReunioesSG = [
@@ -237,10 +236,18 @@ export class DadosProvider {
   }
 
   getCelulas(successCallback, errorCallback){
+    this.getLocation(coordenadas =>{
+      this.getCel(coordenadas, ok => {
+        successCallback(ok);
+      }, err => errorCallback(err));
+
+    }, err => errorCallback(err));
+
+  }
+
+  private getCel(coords,successCallback, errorCallback){
     let listCity = [];
     let celulasArray = [];
-
-    console.log(this.coords);
 
     this.getCidadesCel(cidades=>{
       const cidadesPromisses = cidades.map(cidade=>{
@@ -252,7 +259,7 @@ export class DadosProvider {
           celulasList.forEach( celula => {
             let cel;
             cel = celula.val();
-            cel.distance = this.getDistance(this.coords,{latitude: Number(cel.latitude), longitude: Number(cel.longitude)});
+            cel.distance = this.getDistance(coords,{latitude: Number(cel.latitude), longitude: Number(cel.longitude)});
             listCelulas.push(cel);
             celulasArray.push(cel);
             return false;
@@ -271,7 +278,7 @@ export class DadosProvider {
 
   }
 
-  getCidadesCel(successCallback, errorCallback){
+  private getCidadesCel(successCallback, errorCallback){
     let link = "/"+this.l+"/celulas/locais/";
     let ref = this.afData.database.ref(link);
     let cidades:any;
@@ -295,8 +302,23 @@ export class DadosProvider {
     return Geolib.convertUnit('km', distance, 2);
   }
 
-  getLocation(){
-    return this.coords;
+  getCoords(){
+    this.geolocation.getCurrentPosition().then(resp =>{
+      this.storage.set('coords', {latitude: resp.coords.latitude, longitude: resp.coords.longitude}).then((change)=>{
+      });
+    });
+  }
+
+  geoLocation(successCallback, errorCallback){
+    this.geolocation.getCurrentPosition().then(resp =>{
+      successCallback({latitude: resp.coords.latitude, longitude: resp.coords.longitude})
+    }, err => errorCallback(err));
+  }
+
+  getLocation(successCallback, errorCallback){
+    this.storage.get('coords').then(done => {
+      successCallback(done);
+    }, err => errorCallback(err));
   }
 
   atualizaIgreja(){
