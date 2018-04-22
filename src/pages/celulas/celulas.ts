@@ -6,12 +6,8 @@ import { DadosProvider } from '../../providers/dados-provider';
 
 //pages
 import { ListCelulasPage } from './list/list';
+import { CelulasMapPage } from './map/celulas-map'
 
-
-
-/*import { NetworkProvider } from '../../providers/network-provider';
-import { CelulasMapPage } from '../celulas-map/celulas-map'; Launch Navigator
-import { CelulasListPage } from '../celulas-list/celulas-list';*/
 
 @Component({
   selector: 'page-celulas',
@@ -41,7 +37,7 @@ export class CelulasPage {
     this.navCtrl.push(ListCelulasPage);
   }
   mapCelulas(){
-    //this.navCtrl.push(CelulasMapPage);
+    this.navCtrl.push(CelulasMapPage);
   }
   close() {
     this.viewCtrl.dismiss();

@@ -11,7 +11,6 @@ import { EventosProvider } from './eventos';
 //plugins
 import firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { SubjectSubscriber } from 'rxjs/Subject';
 import { Geolocation } from '@ionic-native/geolocation';
 
 //libs
@@ -121,14 +120,15 @@ export class DadosProvider {
       }
     ];
 
-    this.eventos.eventChangeIgreja.subscribe(event => {
-      //console.log('verificando eventos...');
-      if(event == true){
-        //houve mudança
-        this.atualizaIgreja()
-      }
-    });
-  }
+    this.eventos.eventChangeIgreja
+      .subscribe(event => {
+        //console.log('verificando eventos...');
+        if(event == true){
+          //houve mudança
+          this.atualizaIgreja()
+        }
+      });
+    }
 
   getReunioes(){
     if(this.l == "sg"){

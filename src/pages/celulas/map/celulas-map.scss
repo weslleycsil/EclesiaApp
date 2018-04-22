@@ -1,0 +1,42 @@
+page-celulas-map {
+  .corpo {
+      background: #000000;
+      width: 100%;
+
+  }
+
+  .scroll {
+      height: 100%;
+  }
+
+  #map {
+      width: 100%;
+      height: 100%;
+  }
+  .submenu{
+      text-align: center;
+      button{
+          color: #FFFFFF;
+      }
+  }
+
+  map-view {
+    background-color: #34495e !important;
+    //height: 50% !important;
+  }
+
+  map-view .content {
+    //padding: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  map-view .fixed-content{
+    margin-top: 10px !important;
+  }
+
+  map-view .scroll-content{
+    margin-top: 10px !important;
+  }
+
+}

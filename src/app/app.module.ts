@@ -60,6 +60,8 @@ import { ListCelulasPage } from './../pages/celulas/list/list';
 import { ViewCelulaPage } from './../pages/celulas/list/view-celula/view-celula';
 
 import { MapaPage } from '../pages/mapa/mapa';
+import { CelulasMapPage } from '../pages/celulas/map/celulas-map';
+
 
 
 
@@ -82,6 +84,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+
+//components
+import { MapViewComponent } from '../components/map-view/map-view';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCixxMQwUqZvjwgaclFOl7jaNGaY1GzKlk",
@@ -118,7 +123,9 @@ export const firebaseConfig = {
     PostblogPage,
     ListCelulasPage,
     ViewCelulaPage,
-    MapaPage
+    MapaPage,
+    CelulasMapPage,
+    MapViewComponent
   ],
   imports: [
     BrowserModule,
@@ -154,7 +161,8 @@ export const firebaseConfig = {
     PostblogPage,
     ListCelulasPage,
     ViewCelulaPage,
-    MapaPage
+    MapaPage,
+    CelulasMapPage
   ],
   providers: [
     StatusBar,

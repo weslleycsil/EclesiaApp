@@ -6,6 +6,7 @@ import { DadosProvider } from '../../providers/dados-provider';
 
 //pluguins
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+
 declare var google: any;
 
 @Component({
