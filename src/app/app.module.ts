@@ -51,6 +51,8 @@ import { SignupPage } from './../pages/signup/signup';
 import { SobrePage } from './../pages/sobre/sobre';
 import { PerfilPage } from './../pages/perfil/perfil';
 import { FeedbackPage } from './../pages/feedback/feedback';
+import { ViewNotificationsPage } from '../pages/notifications/viewnotifications/viewnotifications';
+import { NotificationsPage } from '../pages/notifications/notifications';
 
 //Subpages
 import { MinisterioPage } from './../pages/ministerio/ministerio';
@@ -133,7 +135,9 @@ export const firebaseConfig = {
     MapViewComponent,
     LoginPage,
     ResetPage,
-    SignupPage
+    SignupPage,
+    NotificationsPage,
+    ViewNotificationsPage
   ],
   imports: [
     BrowserModule,
@@ -173,7 +177,9 @@ export const firebaseConfig = {
     CelulasMapPage,
     LoginPage,
     ResetPage,
-    SignupPage
+    SignupPage,
+    NotificationsPage,
+    ViewNotificationsPage
   ],
   providers: [
     StatusBar,

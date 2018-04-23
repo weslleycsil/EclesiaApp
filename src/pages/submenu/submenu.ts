@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, ModalController, ToastController, ActionSheetController, Platform } from 'ionic-angular';
+import { NavController, NavParams, ViewController, ModalController, ToastController, ActionSheetController, Platform, App } from 'ionic-angular';
 
 //pages
 import { SobrePage } from '../sobre/sobre';
@@ -7,7 +7,7 @@ import { SlidesPage } from '../slides/slides';
 import { FeedbackPage } from '../feedback/feedback';
 import { LoginPage } from '../login-page/login-page';
 import { PerfilPage } from '../perfil/perfil';
-
+import { NotificationsPage } from './../notifications/notifications';
 
 
 //providers
@@ -30,7 +30,8 @@ export class SubmenuPage {
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
     public login: LoginProvider,
-    public local: LocalProvider) {}
+    public local: LocalProvider,
+    public app: App) {}
   close() {
     this.viewCtrl.dismiss();
   }
@@ -127,6 +128,12 @@ export class SubmenuPage {
   }
 
   toLogin(){
+    this.close();
     this.navCtrl.setRoot(LoginPage);
+  }
+
+  notifications(){
+    this.close();
+    this.app.getRootNav().push(NotificationsPage);
   }
 }

@@ -94,7 +94,7 @@ export class LoginProvider {
     this.saveUser(this.usuario);
   }
   updatePushID(){
-    
+
   }
 
   private saveUser(user: Usuario){

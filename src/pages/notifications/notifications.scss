@@ -1,0 +1,28 @@
+page-notifications {
+  .list-page {
+    ion-note {
+      font-size: 12px !important;
+      align-self: flex-start !important;
+      margin-top: 14px !important;
+    }
+  }
+
+}
+$categories: (
+ new: #AC282B,
+ normal: rgb(58, 37, 160),
+);
+
+@function auxiliary-categories() {
+  @return map-remove($categories);
+}
+
+page-notifications {
+
+  @each $track, $value in auxiliary-categories() {
+    ion-item-sliding[track=#{$track}] ion-label {
+      border-left: 2px solid $value;
+      padding-left: 10px;
+    }
+   }
+}

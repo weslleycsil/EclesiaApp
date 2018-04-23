@@ -1,6 +1,8 @@
 ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="1911651749103779" --variable APP_NAME="Eclesia - SG"
 npm install --save @ionic-native/facebook
 
+ionic cordova plugin add cordova-plugin-statusbar
+
 sudo gem install cocoapods
 pod repo update
 pod setup

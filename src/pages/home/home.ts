@@ -26,7 +26,7 @@ import { DadosProvider } from '../../providers/dados-provider';
 })
 export class HomePage {
   pages: Array<{title: string, component: any}>;
-  n = 9;
+  newChats: any;
 
   constructor(
     public navCtrl: NavController,
@@ -51,6 +51,11 @@ export class HomePage {
       { title: 'Sobre', component: SobrePage},
       { title: 'Contato', component: ContatoPage}
     ]
+
+    this.dados.getNewChats(chats =>{
+      this.newChats = chats;
+      console.log(this.newChats);
+    }, err => console.log(err));
   }
 
   search(page){

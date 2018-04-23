@@ -2,7 +2,7 @@
   <ion-toolbar color="preto">
     <ion-buttons left>
       <button ion-button icon-only (click)="presentPopover($event)">
-        <ion-badge *ngIf="n" color="accent">+{{n}}</ion-badge>
+        <ion-badge *ngIf="newChats" color="accent">+{{newChats}}</ion-badge>
         <ion-icon name="person"></ion-icon>
       </button>
     </ion-buttons>

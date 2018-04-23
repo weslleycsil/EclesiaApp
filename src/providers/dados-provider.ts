@@ -12,6 +12,8 @@ import { EventosProvider } from './eventos';
 import firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Geolocation } from '@ionic-native/geolocation';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 //libs
 import * as Geolib from 'geolib';
@@ -24,13 +26,16 @@ export class DadosProvider {
   private listReunioesCF = [];
   private l;
   private zone: NgZone;
+  private userCurrent;
+  private userUid;
 
   constructor(
     private local: LocalProvider,
     private eventos: EventosProvider,
     private afData: AngularFireDatabase,
     private geolocation: Geolocation,
-    private storage: Storage
+    private storage: Storage,
+    private afAuth: AngularFireAuth,
   ) {
 
     this.zone = new NgZone({});
@@ -128,7 +133,13 @@ export class DadosProvider {
           this.atualizaIgreja()
         }
       });
+
+    //this.getUser();
     }
+
+  getUser(){
+    this.afAuth.authState.subscribe((user: firebase.User) =>  this.userCurrent = user.uid, err => console.log(err))
+  }
 
   getReunioes(){
     if(this.l == "sg"){
@@ -325,6 +336,47 @@ export class DadosProvider {
     this.l = this.local.getIgreja();
     //console.log('Igreja Atualizada ',this.l);
     this.eventos.setChangeIgreja(false);
+  }
+
+  getNotifications(successCallback, errorCallback){
+    let link = "/chats/"+this.userUid+"/";
+    let ref = this.afData.database.ref(link);
+    let chatList = [];
+
+		ref.on('child_added', (snapshot) =>{
+			this.zone.run( () =>{
+				let objeto = snapshot.val();
+
+        chatList.push(objeto);
+
+      });
+      successCallback(chatList);
+    }, error => {
+      errorCallback(error);
+    });
+  }
+
+  getNewChats(successCallback, errorCallback){
+    this.afAuth.authState.subscribe((user: firebase.User) =>  {
+      this.userUid = user.uid;
+
+      let link = "/userProfile/"+this.userUid+"/";
+      let ref = this.afData.database.ref(link);
+
+      let newChats: any;
+
+      ref.on('value', (snapshot) =>{
+          let objeto = snapshot.val();
+          this.userCurrent = snapshot.val();
+
+          newChats = objeto.chats;
+
+        successCallback(newChats);
+      }, error => {
+        errorCallback(error);
+      });
+    }, err => console.log(err));
+
   }
 
 
