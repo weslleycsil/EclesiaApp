@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "228173217601",
+    "firebase_url": "https://appeclesia-5a1bd.firebaseio.com",
+    "project_id": "appeclesia-5a1bd",
+    "storage_bucket": "appeclesia-5a1bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228173217601:android:37aa18c8dda5ce96",
+        "android_client_info": {
+          "package_name": "br.com.tecnicoweslley.eclesiaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228173217601-80s63tss2umirtj717eabq68iamdohu5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.tecnicoweslley.eclesiaapp",
+            "certificate_hash": "26119d79d05981ade5169cf5a524ad270b73e9ca"
+          }
+        },
+        {
+          "client_id": "228173217601-e0412pv4vg3214crsua2hrdoqlgegmm5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCe5qLYi9TxU8r_d3p_vFrEA4zvcoKgVww"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228173217601-c0lvcdnn5d2cbf7729r42l4bhi9ao92q.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.tecnicoweslley.eclesiaapp"
+              }
+            },
+            {
+              "client_id": "228173217601-e0412pv4vg3214crsua2hrdoqlgegmm5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

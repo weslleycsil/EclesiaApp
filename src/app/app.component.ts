@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login-page/login-page';
 
 import { DadosProvider } from './../providers/dados-provider';
 import { LoginProvider } from './../providers/login-provider';
+import { Push } from '../providers/push';
 
 
 
@@ -25,11 +26,10 @@ export class MyApp {
         dismissOnPageChange: true
       });
       load.present();
-
-      dados.getCoords();
       statusBar.styleDefault();
       splashScreen.hide();
-
+      dados.getCoords();
+      Push.init();
       login.checkAuthState(res=>{
         if(res){
           this.rootPage = HomePage;

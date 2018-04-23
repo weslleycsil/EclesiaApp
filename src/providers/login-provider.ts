@@ -64,6 +64,7 @@ export class LoginProvider {
   facebook(token, pushId, successCallback, errorCallback){
     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(token);
     this.afAuth.auth.signInWithCredential(facebookCredential).then((success)=>{
+      console.log(success);
       let data :any;
       data = success;
       this.setUserFace(data.providerData[0],pushId);
@@ -91,6 +92,9 @@ export class LoginProvider {
     this.usuario.pushID = pushID;
     //console.log(this.usuario);
     this.saveUser(this.usuario);
+  }
+  updatePushID(){
+    
   }
 
   private saveUser(user: Usuario){

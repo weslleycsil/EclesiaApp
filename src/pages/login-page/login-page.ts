@@ -47,6 +47,7 @@ export class LoginPage {
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
     });
+    this.loading.present();
     this.loginProvider.login(this.credencial).then( authData => {
       this.toHome();
       this.presentToast('Login efetuado com Sucesso!');
@@ -60,12 +61,17 @@ export class LoginPage {
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
     });
+    this.loading.present();
     this.facebook.login(response =>{
+      //console.log('Reposta Facebook: ',response);
       Push.getPushId(id =>{
-        this.loginProvider.facebook(response.authResponse.accessToken, id, ()=>{
+        //console.log('Reposta Onesignal ID: ',id)
+        this.loginProvider.facebook(response.accessToken, id, (a)=>{
+          //console.log('Reposta Firebase Facebook: ',a)
           this.toHome();
           this.presentToast('Login efetuado com Sucesso!');
         }, (error) =>{
+          //console.log('Reposta de Erro Firebase Facebook: ',error);
           this.loading.dismiss();
           this.presentToast('Ops... Houve um erro ao tentar Logar');
         });

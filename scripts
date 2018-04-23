@@ -1,0 +1,31 @@
+ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="1911651749103779" --variable APP_NAME="Eclesia - SG"
+npm install --save @ionic-native/facebook
+
+sudo gem install cocoapods
+pod repo update
+pod setup
+
+ionic cordova plugin add onesignal-cordova-plugin
+npm install --save @ionic-native/onesignal
+
+ionic cordova plugin add cordova-plugin-app-version
+npm install --save @ionic-native/app-version
+
+ionic cordova plugin add cordova-plugin-firebase
+npm install --save @ionic-native/firebase
+
+ionic cordova plugin add cordova-plugin-firebase-analytics
+npm install --save @ionic-native/firebase-analytics
+
+ionic cordova plugin add cordova-plugin-geolocation
+npm install --save @ionic-native/geolocation
+
+ionic cordova plugin add cordova-plugin-inappbrowser
+npm install --save @ionic-native/in-app-browser
+
+ionic cordova plugin add uk.co.workingedge.phonegap.plugin.launchnavigator
+npm install --save @ionic-native/launch-navigator
+
+ionic cordova plugin add cordova-launch-review
+npm install --save @ionic-native/launch-review
+
