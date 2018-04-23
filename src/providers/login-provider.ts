@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Storage } from '@ionic/storage';
 
 //models
 import { Credencial } from '../models/credencial';
@@ -8,6 +7,8 @@ import { Usuario } from '../models/user';
 
 //providers
 import { Push } from './push';
+import { EventosProvider } from './eventos';
+import { LocalProvider } from './local-provider';
 
 //plugins
 import firebase from 'firebase';
@@ -25,6 +26,7 @@ export class LoginProvider {
   public usuario: Usuario;
 
   constructor(
+    private local: LocalProvider,
     private push: Push,
     private afAuth: AngularFireAuth,
     private afData: AngularFireDatabase
@@ -32,13 +34,14 @@ export class LoginProvider {
     this.userProfile = this.afData.database.ref('/userProfile');
     this.provedor = new firebase.auth.FacebookAuthProvider();
     this.usuario = new Usuario();
+
   }
 
   registrar(credencial: Credencial, usuario: Usuario): any{
     return firebase.auth().createUserWithEmailAndPassword(credencial.email,credencial.senha)
     .then((User) => {
       Push.getPushId(id => {
-        console.log(User);
+        //console.log(User);
         this.userProfile.child(User.uid).set({nome: usuario.nome, email: credencial.email, foto: "any", pushID: id});
       });
     }, error => {
@@ -92,6 +95,12 @@ export class LoginProvider {
 
   private saveUser(user: Usuario){
     this.userProfile.child(user.uid).set({nome: user.nome, email: user.email, foto: user.foto, pushID: user.pushID});
+  }
+
+  checkAuthState(successCallback, errorCallback) {
+    this.afAuth.authState.subscribe((res) => {
+      successCallback(res);
+    }, err=>  errorCallback(err));
   }
 
 }

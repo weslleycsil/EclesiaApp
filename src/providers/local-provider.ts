@@ -15,7 +15,7 @@ export class LocalProvider {
     private eventos: EventosProvider) {
       //console.log('Provider Local');
       this.eventos.setChangeIgreja(false);
-      this.verificaLocal();
+      this.verificaLocal()
   }
 
   private verificaLocal(){
@@ -40,10 +40,6 @@ export class LocalProvider {
       this.eventos.setChangeIgreja(true);
       //console.log("igreja Trocada ", change);
     });
-  }
-
-  geoLocal(){
-
   }
 
   getIgreja(): string{

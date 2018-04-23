@@ -5,6 +5,9 @@ import { NavController, NavParams, ViewController, ModalController, ToastControl
 import { SobrePage } from '../sobre/sobre';
 import { SlidesPage } from '../slides/slides';
 import { FeedbackPage } from '../feedback/feedback';
+import { LoginPage } from '../login-page/login-page';
+import { PerfilPage } from '../perfil/perfil';
+
 
 
 //providers
@@ -34,8 +37,8 @@ export class SubmenuPage {
 
   perfil(){
     this.close();
-    //let modal = this.modalCtrl.create(PerfilModalPage);
-    //modal.present();
+    let modal = this.modalCtrl.create(PerfilPage);
+    modal.present();
   }
 
   sobre(){
@@ -47,6 +50,7 @@ export class SubmenuPage {
   sair(){
     this.login.logoff();
     this.close();
+    this.toLogin();
     this.presentToast('middle','Você Saiu com Sucesso.');
   }
 
@@ -120,5 +124,9 @@ export class SubmenuPage {
 
   verLogin(){
     return false;
+  }
+
+  toLogin(){
+    this.navCtrl.setRoot(LoginPage);
   }
 }

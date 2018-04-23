@@ -1,10 +1,7 @@
 <ion-header>
   <ion-toolbar color="preto">
     <ion-buttons left>
-      <button ion-button icon-only color="royal" (click)="presentPopover($event)" *ngIf="verLogin() === false">
-        <ion-icon name="menu"></ion-icon>
-      </button>
-      <button ion-button icon-only (click)="presentPopover($event)" *ngIf="verLogin() === true">
+      <button ion-button icon-only (click)="presentPopover($event)">
         <ion-badge *ngIf="n" color="accent">+{{n}}</ion-badge>
         <ion-icon name="person"></ion-icon>
       </button>

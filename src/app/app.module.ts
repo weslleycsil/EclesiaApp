@@ -43,6 +43,9 @@ import { PapojovemPage } from './../pages/papojovem/papojovem';
 //outras
 import { ContaPage } from './../pages/conta/conta';
 import { PayPage } from './../pages/pay/pay';
+import { LoginPage } from './../pages/login-page/login-page';
+import { ResetPage } from './../pages/reset/reset';
+import { SignupPage } from './../pages/signup/signup';
 
 //submenupages
 import { SobrePage } from './../pages/sobre/sobre';
@@ -78,6 +81,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { Network } from '@ionic-native/network';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
+import { Facebook } from '@ionic-native/facebook';
+import { Firebase } from '@ionic-native/firebase';
 
 
 //firebase
@@ -125,7 +130,10 @@ export const firebaseConfig = {
     ViewCelulaPage,
     MapaPage,
     CelulasMapPage,
-    MapViewComponent
+    MapViewComponent,
+    LoginPage,
+    ResetPage,
+    SignupPage
   ],
   imports: [
     BrowserModule,
@@ -162,7 +170,10 @@ export const firebaseConfig = {
     ListCelulasPage,
     ViewCelulaPage,
     MapaPage,
-    CelulasMapPage
+    CelulasMapPage,
+    LoginPage,
+    ResetPage,
+    SignupPage
   ],
   providers: [
     StatusBar,
@@ -184,7 +195,8 @@ export const firebaseConfig = {
     LocalProvider,
     EventosProvider,
     DadosProvider,
-    Geolocation
+    Geolocation,
+    Facebook
   ]
 })
 export class AppModule {}

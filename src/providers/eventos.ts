@@ -17,4 +17,5 @@ export class EventosProvider {
     this.eventChangeIgreja.emit(val);
     //console.log("Evento disparado")
   }
+
 }

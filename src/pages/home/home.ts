@@ -13,10 +13,8 @@ import { LocalizarPage } from '../localizar/localizar';
 import { PapojovemPage } from '../papojovem/papojovem';
 import { CelulasPage } from '../celulas/celulas';
 
-
 //plugins
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { SocialSharing } from '@ionic-native/social-sharing';
 
 //provider
 import { DadosProvider } from '../../providers/dados-provider';
@@ -39,7 +37,6 @@ export class HomePage {
     public toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
-    private socialSharing: SocialSharing,
     private dados: DadosProvider
   ) {
     this.pages = [
@@ -139,10 +136,6 @@ export class HomePage {
       ]
     });
     actionSheet.present();
-  }
-
-  verLogin(){
-    return false;
   }
 
 }

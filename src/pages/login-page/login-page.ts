@@ -4,10 +4,14 @@ import { NavController, NavParams, LoadingController, ToastController} from 'ion
 import { ResetPage } from '../reset/reset';
 import { SignupPage } from '../signup/signup';
 
-import { NetworkProvider } from '../../providers/network-provider';
 import { LoginProvider } from '../../providers/login-provider';
 import { FacebookProvider } from '../../providers/facebook';
 import { Push } from './../../providers/push';
+
+
+import { HomePage } from './../home/home';
+
+
 
 
 @Component({
@@ -24,18 +28,11 @@ export class LoginPage {
     public loginProvider: LoginProvider,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public netInfo: NetworkProvider,
     public facebook: FacebookProvider,
     public push: Push
     ) {
       this.credencial = new Credencial;
     }
-
-  ionViewDidLoad(){
-    if(!this.netInfo.isOnline()){
-        console.log('Infelizmente você não está conectado à Internet<br><br>Para um melhor aproveitamento, conecte-se à Internet.</p>');
-    }
-  }
 
   onReset() {
     this.navCtrl.push(ResetPage);
@@ -45,16 +42,13 @@ export class LoginPage {
     this.navCtrl.push(SignupPage);
   }
 
-  voltar(){
-    this.navCtrl.pop();
-  }
 
   loginUser(){
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
     });
     this.loginProvider.login(this.credencial).then( authData => {
-      this.voltar();
+      this.toHome();
       this.presentToast('Login efetuado com Sucesso!');
     }, error => {
       this.loading.dismiss();
@@ -69,7 +63,7 @@ export class LoginPage {
     this.facebook.login(response =>{
       Push.getPushId(id =>{
         this.loginProvider.facebook(response.authResponse.accessToken, id, ()=>{
-          this.voltar();
+          this.toHome();
           this.presentToast('Login efetuado com Sucesso!');
         }, (error) =>{
           this.loading.dismiss();
@@ -77,8 +71,12 @@ export class LoginPage {
         });
       })
     }, error => {
-
+      console.log(error);
     });
+  }
+
+  private toHome(){
+    this.navCtrl.setRoot(HomePage);
   }
 
   presentToast(msg: string) {
