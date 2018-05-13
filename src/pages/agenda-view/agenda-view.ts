@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController, Platform } from 'ionic-angular';
 
+import { PhotoViewer } from '@ionic-native/photo-viewer';
+
 
 @Component({
   selector: 'page-agenda-view',
@@ -13,10 +15,15 @@ export class AgendaViewPage {
     public navParams: NavParams,
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController,
-    public platform: Platform
+    public platform: Platform,
+    private photoViewer: PhotoViewer
     ) {
       this.event = this.navParams.get('item');
     }
+
+  view(url){
+    this.photoViewer.show(url);
+  }
 
   presentToast(texto: string) {
     let toast = this.toastCtrl.create({

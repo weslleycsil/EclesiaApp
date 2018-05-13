@@ -46,6 +46,7 @@ export class LoginPage {
   loginUser(){
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
+      duration: 15000
     });
     this.loading.present();
     this.loginProvider.login(this.credencial).then( authData => {
@@ -60,6 +61,7 @@ export class LoginPage {
   loginFacebook(){
     this.loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
+      duration: 15000
     });
     this.loading.present();
     this.facebook.login(response =>{

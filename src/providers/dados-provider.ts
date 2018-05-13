@@ -216,6 +216,7 @@ export class DadosProvider {
       dados = {
         lat: -22.83093,
         lng: -43.01562,
+        numero: '02135832811',
         telefone: '<p><strong>Igreja Eclesia - SG</strong><br><br>Tel: (21) 3583-2811</p>',
         endereco: '<p><strong>Igreja Eclesia - SG</strong><br><br>Rua José Mendonça de Campos,<br> N. 551 - Colubande<br>São Gonçalo - RJ</p>'
       }
@@ -224,6 +225,7 @@ export class DadosProvider {
       dados = {
         lat: -22.83093,
         lng: -43.01562,
+        numero: '02135832811',
         telefone: '<p><strong>Igreja Eclesia - CF</strong><br><br>Tel: (21) 3583-2811</p>',
         endereco: '<p><strong>Igreja Eclesia - CF</strong><br><br>Rua,<br> N. <br>Cabo Frio - RJ</p>'
       }
@@ -354,6 +356,10 @@ export class DadosProvider {
     }, error => {
       errorCallback(error);
     });
+  }
+  getNotifications2(){
+    let link = "/chats/"+this.userUid+"/";
+    return this.afData.list(link);
   }
 
   getNewChats(successCallback, errorCallback){

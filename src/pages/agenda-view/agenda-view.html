@@ -19,7 +19,7 @@
         <ion-col>
           <!-- ################ Conteudo Dinamico ################ -->
           <ion-card class="card">
-            <img src="{{event.foto}}"/>
+            <div (click)="view(event.foto)"><img src="{{event.foto}}"/></div>
             <ion-card-content>
               <ion-card-title>
                 {{ event.nome }}

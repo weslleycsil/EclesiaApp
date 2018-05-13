@@ -26,4 +26,18 @@ export class FacebookProvider {
       });
   }
 
+  share(data){
+    return this.fb.showDialog(
+      {
+        method: "share",
+        href: data.href,
+        caption: data.caption,
+        description: data.txt,
+        picture: data.img,
+        hashtag: data.hash,
+        share_feedWeb: true, // iOS only
+      }
+    );
+  }
+
 }

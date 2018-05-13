@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, PopoverController, ModalController, AlertController, ToastController, ActionSheetController, Platform } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 //pages
 import { SobrePage } from './../sobre/sobre';
@@ -12,12 +13,15 @@ import { AgendaPage } from '../agenda/agenda';
 import { LocalizarPage } from '../localizar/localizar';
 import { PapojovemPage } from '../papojovem/papojovem';
 import { CelulasPage } from '../celulas/celulas';
+import { SlidesPage } from '../slides/slides';
 
 //plugins
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 //provider
 import { DadosProvider } from '../../providers/dados-provider';
+import { FacebookProvider } from '../../providers/facebook';
+
 
 
 @Component({
@@ -37,7 +41,9 @@ export class HomePage {
     public toastCtrl: ToastController,
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform,
-    private dados: DadosProvider
+    private dados: DadosProvider,
+    public storage: Storage,
+    private fb: FacebookProvider
   ) {
     this.pages = [
       //{ title: 'LoginPage', component: LoginPage},
@@ -52,10 +58,20 @@ export class HomePage {
       { title: 'Contato', component: ContatoPage}
     ]
 
-    this.dados.getNewChats(chats =>{
+    /*this.dados.getNewChats(chats =>{
       this.newChats = chats;
       console.log(this.newChats);
-    }, err => console.log(err));
+    }, err => console.log(err));*/
+    this.newChats = 0;
+  }
+
+  ionViewDidLoad() {
+    this.storage.get('intro-done').then(done => {
+      if (!done) {
+        this.storage.set('intro-done', true);
+        this.navCtrl.setRoot(SlidesPage);
+      }
+    });
   }
 
   search(page){
@@ -76,7 +92,17 @@ export class HomePage {
     }
   }
 
-  share(){}
+  share(){
+    this.fb.share({
+      href: 'https://e7v7r.app.goo.gl/home',
+      caption: 'Aplicativo Eclesia',
+      txt: 'Você já baixou o App da Eclesia?',
+      img: 'https://comunidadeeclesia.tk/images/logo.png',
+      hash: '#Eclesia',
+    })
+    .then(data=>console.log(data))
+    .catch(err=>console.log(err))
+  }
 
   presentPopover(ev) {
 

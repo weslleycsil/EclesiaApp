@@ -67,6 +67,7 @@ import { ViewCelulaPage } from './../pages/celulas/list/view-celula/view-celula'
 import { MapaPage } from '../pages/mapa/mapa';
 import { CelulasMapPage } from '../pages/celulas/map/celulas-map';
 
+import { SlidesPage } from '../pages/slides/slides';
 
 
 
@@ -85,6 +86,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook } from '@ionic-native/facebook';
 import { Firebase } from '@ionic-native/firebase';
+import { CallNumber } from '@ionic-native/call-number';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 
 //firebase
@@ -94,7 +97,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 //components
 import { MapViewComponent } from '../components/map-view/map-view';
-
 export const firebaseConfig = {
   apiKey: "AIzaSyCixxMQwUqZvjwgaclFOl7jaNGaY1GzKlk",
     authDomain: "appeclesia-5a1bd.firebaseapp.com",
@@ -137,7 +139,8 @@ export const firebaseConfig = {
     ResetPage,
     SignupPage,
     NotificationsPage,
-    ViewNotificationsPage
+    ViewNotificationsPage,
+    SlidesPage
   ],
   imports: [
     BrowserModule,
@@ -179,7 +182,8 @@ export const firebaseConfig = {
     ResetPage,
     SignupPage,
     NotificationsPage,
-    ViewNotificationsPage
+    ViewNotificationsPage,
+    SlidesPage
   ],
   providers: [
     StatusBar,
@@ -202,7 +206,9 @@ export const firebaseConfig = {
     EventosProvider,
     DadosProvider,
     Geolocation,
-    Facebook
+    Facebook,
+    CallNumber,
+    PhotoViewer
   ]
 })
 export class AppModule {}

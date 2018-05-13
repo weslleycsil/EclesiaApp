@@ -21,8 +21,8 @@ page-notifications {
 
   @each $track, $value in auxiliary-categories() {
     ion-item-sliding[track=#{$track}] ion-label {
-      border-left: 2px solid $value;
-      padding-left: 10px;
+      border-left: 4px solid $value;
+      padding-left: 7px;
     }
    }
 }

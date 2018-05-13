@@ -53,7 +53,7 @@ export class ContatoPage {
   }
   enviar(obj: Object) {
         let body = JSON.stringify(obj);
-        this.http.post('http://tecnicoweslley.com.br/projetoshtml/mailApi/mail.php', body)
+        this.http.post('https://twcreativs.com.br/projetoshtml/mailApi/mail.php', body)
         .subscribe(body => {
           //console.log(body);
           let alert = this.alerCtrl.create({

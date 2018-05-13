@@ -2,6 +2,12 @@
   "name": "EclesiaApp",
   "app_id": "34182561",
   "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/mail",
+      "proxyUrl": "https://twcreativs.com.br/projetoshtml/mailApi/mail2.php"
+    }
+  ],
   "integrations": {
     "cordova": {}
   }

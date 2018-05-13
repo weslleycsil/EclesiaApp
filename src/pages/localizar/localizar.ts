@@ -4,6 +4,7 @@ import { NavController, Platform,  AlertController} from 'ionic-angular';
 //plugins
 import { Geolocation } from '@ionic-native/geolocation';
 import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-navigator';
+import { CallNumber } from '@ionic-native/call-number';
 
 //providers
 import { DadosProvider } from '../../providers/dados-provider';
@@ -28,7 +29,9 @@ export class LocalizarPage {
     public alerCtrl: AlertController,
     public dados: DadosProvider,
     private geolocation: Geolocation,
-    private launchNavigator: LaunchNavigator) {
+    private launchNavigator: LaunchNavigator,
+    private callNumber: CallNumber
+  ) {
 
     platform.ready().then(()=> {
       this.online = true;
@@ -85,7 +88,18 @@ export class LocalizarPage {
     let alert = this.alerCtrl.create({
       title: 'Nosso Contato',
       message: this.dadosMap.telefone,
-      buttons: ['Ok']
+      buttons: [{
+        text: 'OK',
+        handler: () => {}
+      },
+      {
+        text: 'Ligar',
+        handler: () => {
+          this.callNumber.callNumber(this.dadosMap.numero, true)
+            .then(res => console.log('Ligando', res))
+            .catch(err => console.log('Error launching dialer', err));
+        }
+      }]
     });
     alert.present();
   }

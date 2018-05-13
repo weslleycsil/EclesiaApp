@@ -76,7 +76,7 @@ export class FeedbackPage {
   }
   enviar(obj: Object) {
         let body = JSON.stringify(obj);
-        this.http.post('http://tecnicoweslley.com.br/projetoshtml/mailApi/mail2.php', body)
+        this.http.post('https://twcreativs.com.br/projetoshtml/mailApi/mail2.php', body)
         .subscribe(body => {
           //console.log(body);
           let alert = this.alertCtrl.create({

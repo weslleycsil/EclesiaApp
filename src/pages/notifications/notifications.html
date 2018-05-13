@@ -14,8 +14,8 @@
           <ion-note item-end>{{msg.time}}</ion-note>
         </button>
         <ion-item-options>
-          <button ion-button color="danger" icon-start>
-            <ion-icon name="ios-more"></ion-icon>
+          <button ion-button color="danger" icon-start (click)="delete(msg.$key, msg)">
+            <ion-icon name="trash"></ion-icon>
             Apagar
           </button>
         </ion-item-options>
@@ -23,3 +23,10 @@
 
     </ion-list>
   </ion-content>
+
+  <ul>
+    <li *ngFor="let msg of msgList1 | async">
+        {{msg.titulo}} - {{msg.$key}}
+      <button (click)="deleteItem(item.key)">Delete</button>
+    </li>
+  </ul>

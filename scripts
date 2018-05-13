@@ -31,3 +31,17 @@ npm install --save @ionic-native/launch-navigator
 ionic cordova plugin add cordova-launch-review
 npm install --save @ionic-native/launch-review
 
+ionic cordova plugin add call-number
+npm install --save @ionic-native/call-number
+
+ionic cordova plugin add com-sarriaroman-photoviewer
+npm install --save @ionic-native/photo-viewer
+
+
+FABRIC
+ionic cordova plugin add cordova-fabric-plugin --variable FABRIC_API_KEY=66e1089a95591f70e06de70e55bae2d3ec45a8ef --variable FABRIC_API_SECRET=8cd78790ca5baf3fd3886c4c326d690fbdf93a9b5808f940bc16bd0c3fee9721
+npm install --save cordova-fabric-plugin
+66e1089a95591f70e06de70e55bae2d3ec45a8ef 8cd78790ca5baf3fd3886c4c326d690fbdf93a9b5808f940bc16bd0c3fee9721
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: *");
