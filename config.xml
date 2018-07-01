@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="19" id="br.com.tecnicoweslley.eclesiaapp" ios-CFBundleVersion="19" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-versionCode="20" id="br.com.tecnicoweslley.eclesiaapp" ios-CFBundleVersion="20" version="1.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Eclesia</name>
     <description>Comunidade Eclesia</description>
     <author email="weslleycsil@gmail.com" href="https://twcreativs.com.br">Weslley Silva</author>
@@ -79,9 +79,17 @@
     <preference name="loadUrlTimeoutValue" value="700000" />
     <preference name="Orientation" value="portrait" />
     <preference name="SplashScreen" value="screen" />
-    <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
-        <string>need location access to find things nearby</string>
-    </edit-config>
+    <platform name="ios">
+        <edit-config file="*-Info.plist" mode="merge" target="NSCameraUsageDescription">
+            <string>Need access to send photo to profile user</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryUsageDescription">
+            <string>Need access to send photo to profile user</string>
+        </edit-config>
+        <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
+            <string>Need location access to find things nearby</string>
+        </edit-config>
+    </platform>
     <platform name="android">
         <hook src="hooks/copy_android_notification_icons.js" type="after_prepare" />
     </platform>
