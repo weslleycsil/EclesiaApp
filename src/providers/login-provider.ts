@@ -62,6 +62,7 @@ export class LoginProvider {
   }
 
   facebook(token, pushId, successCallback, errorCallback){
+    console.log('token: ',token)
     const facebookCredential = firebase.auth.FacebookAuthProvider.credential(token);
     this.afAuth.auth.signInWithCredential(facebookCredential).then((success)=>{
       console.log(success);
@@ -70,7 +71,7 @@ export class LoginProvider {
       this.setUserFace(data.providerData[0],pushId);
       successCallback();
     }).catch((error)=>{
-      console.log("Firebase failure: " + JSON.stringify(error));
+      console.log("Firebase failure: ", error);
       errorCallback(error);
     });
   }
