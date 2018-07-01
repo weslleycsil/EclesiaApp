@@ -64,11 +64,11 @@ export class LoginPage {
       duration: 15000
     });
     this.loading.present();
-    this.facebook.login(response =>{
-      console.log('Reposta Facebook: ',response);
+    this.facebook.login(token =>{
+      console.log('Reposta Facebook: ',token);
       Push.getPushId(id =>{
         console.log('Reposta Onesignal ID: ',id)
-        this.loginProvider.facebook(response.accessToken, id, (a)=>{
+        this.loginProvider.facebook(token, id, (a)=>{
           console.log('Reposta Firebase Facebook: ',a)
           this.toHome();
           this.presentToast('Login efetuado com Sucesso!');

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
-import { Facebook } from '@ionic-native/facebook';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 
 @Injectable()
 export class FacebookProvider {
@@ -9,8 +9,10 @@ export class FacebookProvider {
   user:any;
 
   login(successCallback, errorCallback) {
-    this.fb.login(['public_profile', 'email']).then(response => {
-      successCallback(response.authResponse);
+    this.fb.login(['public_profile', 'email'])
+    .then((response: FacebookLoginResponse) => {
+      successCallback(response.authResponse.accessToken);
+      //successCallback(response.authResponse);
     }, error => {
       errorCallback(error);
     })

@@ -35,7 +35,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       dados.getCoords();
-      //Push.init();
+      Push.init();
       login.checkAuthState(res=>{
         if(res){
           this.rootPage = HomePage;
