@@ -85,7 +85,7 @@ import { Network } from '@ionic-native/network';
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation';
 import { Facebook } from '@ionic-native/facebook';
-import { Firebase } from '@ionic-native/firebase';
+//import { Firebase } from '@ionic-native/firebase';
 import { CallNumber } from '@ionic-native/call-number';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 
@@ -99,10 +99,10 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MapViewComponent } from '../components/map-view/map-view';
 export const firebaseConfig = {
   apiKey: "AIzaSyCixxMQwUqZvjwgaclFOl7jaNGaY1GzKlk",
-    authDomain: "appeclesia-5a1bd.firebaseapp.com",
-    databaseURL: "https://appeclesia-5a1bd.firebaseio.com",
-    storageBucket: "appeclesia-5a1bd.appspot.com",
-    messagingSenderId: "228173217601"
+  authDomain: "appeclesia-5a1bd.firebaseapp.com",
+  databaseURL: "https://appeclesia-5a1bd.firebaseio.com",
+  storageBucket: "appeclesia-5a1bd.appspot.com",
+  messagingSenderId: "228173217601"
 };
 
 

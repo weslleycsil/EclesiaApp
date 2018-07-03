@@ -93,9 +93,6 @@
     <platform name="android">
         <hook src="hooks/copy_android_notification_icons.js" type="after_prepare" />
     </platform>
-    <plugin name="cordova-plugin-firebase-analytics" spec="~0.12.1">
-        <variable name="FIREBASE_VERSION" value="11.0.+" />
-    </plugin>
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.2.1" />
     <plugin name="com.paypal.cordova.mobilesdk" spec="~3.5.0" />
     <plugin name="cordova-plugin-network-information" spec="~2.0.1" />
@@ -104,14 +101,9 @@
     <plugin name="cordova-plugin-device" spec="2.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="1.1.19" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="2.0.5" />
-    <plugin name="cordova-plugin-firebase" spec="~1.0.0" />
     <plugin name="cordova-fabric-plugin" spec="^1.1.14-dev">
         <variable name="FABRIC_API_KEY" value="66e1089a95591f70e06de70e55bae2d3ec45a8ef" />
         <variable name="FABRIC_API_SECRET" value="8cd78790ca5baf3fd3886c4c326d690fbdf93a9b5808f940bc16bd0c3fee9721" />
-    </plugin>
-    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
-        <variable name="APP_ID" value="1911651749103779" />
-        <variable name="APP_NAME" value="Eclesia - SG" />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.2" />
@@ -126,4 +118,18 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.1" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1" />
     <allow-navigation href="http://192.168.0.117:8100" />
+    <plugin name="cordova-plugin-firebase-analytics" spec="^0.12.1">
+        <variable name="FIREBASE_VERSION" value="11.0.+" />
+    </plugin>
+    <plugin name="cordova-support-google-services" spec="^1.2.0" />
+    <plugin name="cordova-plugin-facebook4" spec="^2.2.0">
+        <variable name="APP_ID" value="1911651749103779" />
+        <variable name="APP_NAME" value="Eclesia - SG" />
+        <variable name="ANDROID_SDK_VERSION" value="4.+" />
+    </plugin>
+    <config-file parent="/resources" target="./res/values/strings.xml">
+        <string name="fb_app_id">1911651749103779</string>
+        <string name="fb_app_name">Eclesia - SG</string>
+    </config-file>
+    <engine name="android" spec="7.0.0" />
 </widget>
